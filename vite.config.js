@@ -4,6 +4,6 @@ import vue from '@vitejs/plugin-vue'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
-  base: process.end.NODE_ENV == 'producción' ? '/IRONHACK-FinalTask' : '/' ,
+  base: process.env.NODE_ENV == 'production' ? '/IRONHACK-FinalTask/' : '/' ,
   build: {outDir: 'docs'}
 })
