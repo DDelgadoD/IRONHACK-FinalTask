@@ -1,14 +1,19 @@
 <template>
-<Navbar />
-<RouterView />
+    <RouterView />
 </template>
     
 <script setup>
-import Navbar from './components/Navbar.vue';
-import {createClient} from '@supabase/supabase-js';
+import { ref, onMounted } from 'vue';
+import { createClient } from '@supabase/supabase-js';
+import { getTasks, } from './API'
 
-const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_KEY)
+const loaded = ref(false)
+const tasks = ref(false)
 
-console.log(import.meta.env.BASE_URL)
+onMounted( async() => {
+    tasks.value = await getTasks();
+    loaded.value = true;
+
+});
 </script>
     

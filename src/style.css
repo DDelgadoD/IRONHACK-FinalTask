@@ -1,1 +1,90 @@
-@import 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css';
+@import "https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "roboto";
+}
+
+.background {
+    position: relative;
+    
+    z-index: 0;
+    background-image: linear-gradient(
+        to right bottom,
+        #78a9f2,
+        #729be2,
+        #6b8dd1,
+        #647fc1,
+        #5d72b1
+    );
+
+}
+
+
+/**Responsive login sistema */
+
+@media (max-width: 746px) {
+    .login-form .content {
+        flex-basis: 60%;
+        padding: 4em 4em;
+        background: #fff;
+        box-shadow: 2px 9px 49px -17px rgb(0 0 0 / 10%);
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+    }
+    .login-form .main {
+        flex-direction: column;
+    }
+    .login-form .main {
+        position: relative;
+        display: flex;
+        margin: 48px -38px;
+        box-shadow: rgb(38 57 77) 0px 20px 30px -10px;
+    }
+    .login-form form {
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+    .form-img {
+        border-radius: 0;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        order: 2;
+    }
+    .content {
+        order: 1;
+        border-radius: 0;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+    .login-form .logo {
+        width: 90%;
+        display: block;
+    }
+    button.btn {
+        margin: 25px 0;
+    }
+    .form-img {
+        flex-basis: 50%;
+        background: #ffffff;
+        background-size: cover;
+        padding: 40px;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        align-items: center;
+        display: none;
+        box-shadow: rgb(38 57 77) 0px 20px 30px -10px;
+    }
+    .account {
+        color: #666;
+        font-size: 16px;
+        line-height: 19px;
+        opacity: 0.5;
+        text-align: center;
+    }
+}
