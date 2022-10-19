@@ -1,21 +1,27 @@
 <template>
+    <div class="card-container d-flex">
     <div class="card">
         <div class="card-content">
             <div class="card-title">{{props.title}}</div>
             <div>{{props.body}}</div>
-            
+
             <div class="btns">
                 <button class="btn btn-success me-2 my-2">Accomplished</button>
                 <button class="btn btn-warning me-2 my-2">Edit</button>
-                <button class="btn btn-danger me-2 my-2">Delete</button>
-                
             </div>
+        </div>
+    </div>
+        <div class="close" @click="$emit('close-modal')">
+                <img class="close-img" src="../assets/close-icon.svg" alt="" />
         </div>
     </div>
 </template>
 
 <script setup>
-import {defineProps} from 'vue';
+
+//TODO: crear una nueva vista que haga que el titulo y el contenido se pueda editar
+
+import { defineProps } from 'vue';
 
 const props = defineProps({
     title: String,
@@ -25,30 +31,52 @@ const props = defineProps({
 </script>
 
 <style scoped>
+
+.card-container{
+    justify-content: center;
+    
+}
+
+.card-container:hover{
+    box-shadow:
+        0 0 10px 5px #e0cb48,
+        0 0 12px 6px #f6eaf2,
+        0 0 15px 12px #e2d92b,
+        0 0 20px 15px #ff145c;
+    transition: box-shadow 0.5s linear;
+}
+
 .card {
     display: flex;
     flex-direction: column;
-    height: 100%; 
+    width: 100%;
 }
 
-
 .card-content {
-    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
     margin: 5%;
     width: 90%;
-    
 }
 
 .card-title {
     font-weight: bold;
     font-size: 1.2rem;
-    color:white;
-    background-color: brown;
+    color: white;
+    background-color: rgba(20, 87, 92, 0.5);
     width: 100%;
 }
 
+.close {
+    position:relative;
+    margin: -12px -12px 0%;
+    cursor: pointer;
+   
+}
+
+.close-img {
+    width: 25px;
+}
 </style>

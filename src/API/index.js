@@ -1,16 +1,19 @@
 import { createClient } from '@supabase/supabase-js';
 
+//TODO : Repasar y dar un buen formato
+
 const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_KEY)
 
 console.log(import.meta.env.BASE_URL)
 
-export const registro = async (email, password) =>{
+export const signup = async (email, password) =>{
     const response = await supabase.auth.signUp({
         email,
         password
     })
     
-    console.log(response.data);
+    return response;
+
 }
 
 export const login = async (email, password) =>{
@@ -19,7 +22,7 @@ export const login = async (email, password) =>{
         password
     })
 
-    return response.data.user.id;
+    return response;
 }
 
 /* task

@@ -1,6 +1,6 @@
 <template>
     
-    <div class="background login">
+    <div class="login">
         <div class = "logos">    
             <img class="icono" src="../assets/icon64.png" alt="Icono App">
             <img class="logo" src="../assets/title.png" alt="¡YO CONTROLO!">
@@ -25,20 +25,25 @@
                 </div>
             </div>
         </div>
-        <p class= "account">David Delgado International Holdings Group Company Ltd.</p>
+        <p class= "holding">David Delgado International Holdings Group Company Ltd.</p>
     </div>
 
 </template>
 <script setup>
 import { useRouter } from 'vue-router';
-import { useAuthStore } from '../store/auth'
 import { ref } from 'vue';
 
-import { createClient } from '@supabase/supabase-js';
 import { login } from '../API';
+import { useAuthStore } from '../store/auth'
 
 const router = useRouter();
 const authStore = useAuthStore();
+
+// TODO: comprobar si el user está logueado y mandarlo a freir monas.
+// TODO: cambiar alert por modal
+// TODO: cambiar hover por onClick y centrar la card para que el usuario haga la edición
+// TODO: cambiar delete por una cruz y accomplished por un tick
+// TODO: mirar si se puede editar el orden de las cards directamente en la pantalla 
 
 const form = ref({
     email: {
@@ -52,17 +57,19 @@ const form = ref({
 })
 
 const onSubmit = async() => { 
-    const id = await login(form.value.email.content, form.value.password.content)
-
-    authStore.login(id);
-    router.push("/")
-
+    const response = await login(form.value.email.content, form.value.password.content);
+    
+    if(response.error == null){
+        authStore.login(response.data.user.id);
+        router.push("/");
+    }else{
+        alert(response.error)
+    }
 }
 </script>
 
 
 <style scoped>
-
 .login{
     padding: 40px;
     justify-content: center;
@@ -213,5 +220,12 @@ p.account a:hover {
     text-decoration: underline;
 }
 
+.holding{
+    text-align: center;
+    padding: 20px;
+    padding-bottom: 0;
+    font-size: 16px;
+    color: rgba(8, 8, 8, 0.61);
+}
 
 </style>

@@ -8,11 +8,19 @@
 
 body {
     font-family: "roboto";
+    background-image: linear-gradient(
+        to right bottom,
+        #78a9f2,
+        #729be2,
+        #6b8dd1,
+        #647fc1,
+        #5d72b1
+    );
+    
 }
 
 .background {
     position: relative;
-    
     z-index: 0;
     background-image: linear-gradient(
         to right bottom,
