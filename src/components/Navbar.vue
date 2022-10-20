@@ -14,13 +14,32 @@
             <router-link class="nav-link active" aria-current="page" :to="{ name: 'home' }">Home</router-link>
           </li>
           <li class="nav-item">
-            <button class="btn btn-danger" to="/">Logout</button>
+            <button class="btn btn-danger"  @click="desconecta()">Logout</button>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 </template>
+
+<script setup>
+import { logOut } from '../API'
+import { useAuthStore } from '../store/auth';
+import router from '../router';
+
+const authStore = useAuthStore();
+
+const desconecta = async () =>{
+  
+  const response = await logOut();
+  if(response.error == null){
+    authStore.logout();
+    router.push("/login"); 
+  }else{
+    alert(response.error)
+  }
+}
+</script>
 
 <style scoped>
 

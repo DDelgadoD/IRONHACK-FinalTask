@@ -89,6 +89,11 @@ const updateTasks = async (task) => {
     console.log(response);
 }
 
+export const logOut = async () => {
+    const response = await supabase.auth.signOut()
+    return response
+}
+
 
 /*
 

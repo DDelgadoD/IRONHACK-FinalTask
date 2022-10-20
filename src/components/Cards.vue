@@ -5,14 +5,19 @@
             <div class="card-title">{{props.title}}</div>
             <div>{{props.body}}</div>
 
-            <div class="btns">
-                <button class="btn btn-success me-2 my-2">Accomplished</button>
-                <button class="btn btn-warning me-2 my-2">Edit</button>
+            <div class="d-flex justify-content-end w-100">
+                <div @click="$emit('edit-modal')">
+                    <img class="ok-edit-img" src="../assets/editar.svg" alt="" />
+                </div>
+                <div @click="$emit('ok-modal')">
+                    <img class="ok-edit-img" src="../assets/completo.svg" alt="" />
+                </div>
+
             </div>
         </div>
     </div>
         <div class="close" @click="$emit('close-modal')">
-                <img class="close-img" src="../assets/close-icon.svg" alt="" />
+                <img class="close-img" src="../assets/cerrar.svg" alt="" />
         </div>
     </div>
 </template>
@@ -79,4 +84,12 @@ const props = defineProps({
 .close-img {
     width: 25px;
 }
+
+.ok-edit-img {
+    width: 50px;
+    cursor: pointer;
+   
+}
+
+
 </style>

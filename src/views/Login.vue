@@ -17,7 +17,7 @@
                         <button class="btn" id="submit" name="submit" type="submit" >Iniciar sesion</button>
                     </form>
 
-                    <p class="account">¿No tienes tu cuenta? ¡Crea una! <a href="">Registrar</a></p>
+                    <p class="account">¿No tienes tu cuenta? ¡Crea una! <a href="/signup">Registrar</a></p>
                     <p class="account">¿Te olvidaste tu contraseña? <a href="">Recuperar</a></p>
                 </div>
                 <div class="form-img">
@@ -61,7 +61,7 @@ const onSubmit = async() => {
     
     if(response.error == null){
         authStore.login(response.data.user.id);
-        router.push("/");
+        router.push("/"); 
     }else{
         alert(response.error)
     }

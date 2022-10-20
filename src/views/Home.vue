@@ -21,19 +21,30 @@
 // TODO: Implementar logOut
 
 import Navbar from '../components/Navbar.vue';
-import { ref, onMounted } from 'vue';
+import { ref, onBeforeMount, } from 'vue';
 import { getTasks } from '../API'
 import Cards from '../components/Cards.vue';
 import Footer from '../components/Footer.vue';
+import { useAuthStore } from '../store/auth';
+import router from '../router';
+
+const authStore = useAuthStore();
 
 const loaded = ref(false)
 const tasks = ref(false)
 
-onMounted( async() => {
-    tasks.value = await getTasks();
-    loaded.value = true;
+onBeforeMount( async() => {
+    console.log("auth: ",authStore.isAuth)
+    if (authStore.isAuth == true){
+        tasks.value = await getTasks();
+        loaded.value = true;
+    }else{
+        router.push("/login")
+    }
+
 
 });
+
 </script>
 
 <style scoped>

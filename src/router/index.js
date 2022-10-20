@@ -6,16 +6,32 @@ const routes = [
     name: "home", 
     component: () => import('../views/Home.vue')
   },
-  { 
+  /* { 
     path: '/login', 
     name: "login", 
     component: () => import('../views/Login.vue')
   },
   { 
-    path: '/register', 
-    name: "register", 
+    path: '/signup', 
+    name: "signup", 
     component: () => import('../views/Signup.vue')
-  },
+  },*/
+  { 
+    path: '/login', 
+    component: () => import('../views/LogOrSign.vue'),
+    children: [
+      {
+          path: '',
+          name: 'login',
+          component: () => import('../components/Login.vue')
+      },
+      {
+        path: '/signup',
+        name: 'signup',
+        component: () => import('../components/Signup.vue')
+    }
+    ]
+  }
 ];
 
 const router = createRouter({
