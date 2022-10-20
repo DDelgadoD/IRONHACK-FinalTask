@@ -11,6 +11,23 @@
 
 </template>
 
+<script setup>
+import { onBeforeMount, } from 'vue';
+import { useAuthStore } from '../store/auth';
+import router from '../router';
+
+const authStore = useAuthStore();
+
+onBeforeMount( async() => {
+    console.log("auth: ", authStore.isAuth)
+    if (authStore.isAuth == true){
+        console.log("hello")
+        router.push("/")
+    }
+});
+</script>
+
+
 <style scoped>
 .login{
     padding: 40px;

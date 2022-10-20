@@ -50,6 +50,13 @@ const onSubmit = async() => {
     max-width: 800px;
 }
 
+.main {
+    position: relative;
+    display: flex;
+    margin: 30px 0;
+    box-shadow: rgb(38 57 77) 0px 20px 30px -10px;
+}
+
 h2 {
     font-size: 30px;
     line-height: 40px;
@@ -59,13 +66,6 @@ h2 {
     text-align: center;
 }
 
-.main {
-    position: relative;
-    display: flex;
-    margin: 30px 0;
-    box-shadow: rgb(38 57 77) 0px 20px 30px -10px;
-}
-
 .content {
     padding: 3em 3em;
     background: #fff;
@@ -73,23 +73,13 @@ h2 {
     border-radius: 8px;
 }
 
-.btn,
-button,
-input {
-    border-radius: 35px;
-}
-
-.btn:hover,
-button:hover {
-    transition: 0.5s ease;
-}
-
-a {
-    text-decoration: none;
-}
-
 form {
     margin: 30px 0;
+}
+
+.btn,
+input {
+    border-radius: 35px;
 }
 
 input {
@@ -106,15 +96,14 @@ input {
     background: #f7fafc;
     transition: 0.3s ease;
 }
+
 input:focus {
     background: transparent;
     border: 1px solid #0568c1;
 }
-button.btn {
-    margin: 25px 0;
-}
 
-button {
+.btn {
+    margin: 25px 0;
     font-size: 18px;
     color: #fff;
     width: 100%;
@@ -125,9 +114,10 @@ button {
     transition: 0.3s ease;
 }
 
-button:hover {
+.btn:hover {
     background: #272346;
     color: #fff;
+    transition: 0.5s ease;
 }
 
 @media (max-width: 746px) {
@@ -141,8 +131,6 @@ button:hover {
     }
     .main {
         flex-direction: column;
-    }
-    .main {
         position: relative;
         display: flex;
         margin: 48px -38px;
@@ -155,7 +143,7 @@ button:hover {
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
     }
-    button.btn {
+    .btn {
         margin: 25px 0;
     }
 }

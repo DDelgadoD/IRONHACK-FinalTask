@@ -1,6 +1,6 @@
 <template>
     <div class="card-container d-flex">
-    <div class="card">
+    <div class="card day-card">
         <div class="card-content">
             <div class="card-title">{{props.title}}</div>
             <div>{{props.body}}</div>
@@ -55,6 +55,17 @@ const props = defineProps({
     display: flex;
     flex-direction: column;
     width: 100%;
+
+}
+
+.day-card{
+    background-color: var(--day);
+    border-color: var(--night);
+}
+
+.night-card{
+    background-color: var(--night);
+    border-color: var(--day);
 }
 
 .card-content {

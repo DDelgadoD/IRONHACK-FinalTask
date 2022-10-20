@@ -1,6 +1,6 @@
 <template>
     <Navbar />
-    <div class="container">
+    <div class="container day-case">
         <h1>TASKS</h1>
     
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
@@ -50,9 +50,18 @@ onBeforeMount( async() => {
 <style scoped>
 .container{
     padding: 3em 3em;
-    background: #fff;
-    box-shadow: 2px 9px 49px -17px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     margin:2% auto;
 }
+
+.night-case{
+    background-image: var(--night-bg);
+    box-shadow: var(--night-shadow);
+}
+
+.day-case{
+    background: white;
+    box-shadow: var(--day-shadow);
+}
+
 </style>
