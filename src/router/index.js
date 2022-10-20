@@ -4,21 +4,21 @@ const routes = [
   { 
     path: '/', 
     name: "home", 
-    component: () => import('../views/Home.vue')
+    component: () => import(/* webpackChunkName: 'home' */ '../views/Home.vue')
   },
   { 
     path: '/login', 
-    component: () => import('../views/LogOrSign.vue'),
+    component: () => import(/* webpackChunkName: 'login' */ '../views/LogOrSign.vue'),
     children: [
       {
           path: '',
           name: 'login',
-          component: () => import('../components/Login.vue')
+          component: () => import(/* webpackChunkName: 'login' */ '../components/Login.vue')
       },
       {
         path: '/signup',
         name: 'signup',
-        component: () => import('../components/Signup.vue')
+        component: () => import(/* webpackChunkName: 'signup' */'../components/Signup.vue')
     }
     ]
   }
@@ -26,7 +26,7 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(),
-  base: '/IRONHACK-FinalTask/',
+  base: import.meta.env.BASE_URL,
   routes,
 });
 
