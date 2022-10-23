@@ -9,29 +9,29 @@ const routes = [
         path: "",
         name: "home",
         component: () =>
-          import(/* webpackChunkName: 'login' */ "../components/Landing.vue"),
+          import(/* webpackChunkName: 'landing' */ "../components/Landing.vue"),
       },
       {
         path: "/trash",
         name: "trash",
         component: () =>
-          import(/* webpackChunkName: 'login' */ "../components/Trash.vue"),
+          import(/* webpackChunkName: 'trash' */ "../components/Trash.vue"),
       },
       {
         path: "/completed",
         name: "completed",
         component: () =>
-          import(/* webpackChunkName: 'login' */ "../components/Completed.vue"),
+          import(/* webpackChunkName: 'completed' */ "../components/Completed.vue"),
       },
     ],
   },
   {
-    path: "/login",
+    path: "/",
     component: () =>
-      import(/* webpackChunkName: 'login' */ "../views/Auths.vue"),
+      import(/* webpackChunkName: 'auths' */ "../views/Auths.vue"),
     children: [
       {
-        path: "",
+        path: "/login",
         name: "login",
         component: () =>
           import(/* webpackChunkName: 'login' */ "../components/Login.vue"),
