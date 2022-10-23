@@ -21,7 +21,9 @@ const routes = [
         path: "/completed",
         name: "completed",
         component: () =>
-          import(/* webpackChunkName: 'completed' */ "../components/Completed.vue"),
+          import(
+            /* webpackChunkName: 'completed' */ "../components/Completed.vue"
+          ),
       },
     ],
   },
