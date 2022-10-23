@@ -5136,14 +5136,14 @@ const Mu = [
       path: "/",
       component: () =>
         lt(
-          () => import("./Home.b47ff1ff.js"),
+          () => import("./Home.c4b84957.js"),
           [
-            "assets/Home.b47ff1ff.js",
+            "assets/Home.c4b84957.js",
             "assets/Home.56ffd1e5.css",
             "assets/title.41b47a33.js",
-            "assets/index.0b576dc2.js",
-            "assets/auth.a934d963.js",
-            "assets/index.5913c7f2.js",
+            "assets/index.c46e4d2d.js",
+            "assets/auth.187cabc7.js",
+            "assets/index.72bcf63d.js",
           ]
         ),
       children: [
@@ -5152,15 +5152,15 @@ const Mu = [
           name: "home",
           component: () =>
             lt(
-              () => import("./Landing.985092be.js"),
+              () => import("./Landing.db043438.js"),
               [
-                "assets/Landing.985092be.js",
+                "assets/Landing.db043438.js",
                 "assets/Landing.ebd27e34.css",
-                "assets/Tasks.636e68f2.js",
+                "assets/Tasks.4736d188.js",
                 "assets/Tasks.7f73c31c.css",
-                "assets/index.0b576dc2.js",
-                "assets/auth.a934d963.js",
-                "assets/index.5913c7f2.js",
+                "assets/index.c46e4d2d.js",
+                "assets/auth.187cabc7.js",
+                "assets/index.72bcf63d.js",
               ]
             ),
         },
@@ -5169,14 +5169,14 @@ const Mu = [
           name: "trash",
           component: () =>
             lt(
-              () => import("./Trash.8803dec6.js"),
+              () => import("./Trash.972c5215.js"),
               [
-                "assets/Trash.8803dec6.js",
-                "assets/Tasks.636e68f2.js",
+                "assets/Trash.972c5215.js",
+                "assets/Tasks.4736d188.js",
                 "assets/Tasks.7f73c31c.css",
-                "assets/index.0b576dc2.js",
-                "assets/auth.a934d963.js",
-                "assets/index.5913c7f2.js",
+                "assets/index.c46e4d2d.js",
+                "assets/auth.187cabc7.js",
+                "assets/index.72bcf63d.js",
               ]
             ),
         },
@@ -5185,14 +5185,14 @@ const Mu = [
           name: "completed",
           component: () =>
             lt(
-              () => import("./Completed.a8d3c4a6.js"),
+              () => import("./Completed.84968261.js"),
               [
-                "assets/Completed.a8d3c4a6.js",
-                "assets/Tasks.636e68f2.js",
+                "assets/Completed.84968261.js",
+                "assets/Tasks.4736d188.js",
                 "assets/Tasks.7f73c31c.css",
-                "assets/index.0b576dc2.js",
-                "assets/auth.a934d963.js",
-                "assets/index.5913c7f2.js",
+                "assets/index.c46e4d2d.js",
+                "assets/auth.187cabc7.js",
+                "assets/index.72bcf63d.js",
               ]
             ),
         },
@@ -5202,12 +5202,12 @@ const Mu = [
       path: "/login",
       component: () =>
         lt(
-          () => import("./Auths.93f07828.js"),
+          () => import("./Auths.e90f6886.js"),
           [
-            "assets/Auths.93f07828.js",
+            "assets/Auths.e90f6886.js",
             "assets/Auths.97148f74.css",
             "assets/title.41b47a33.js",
-            "assets/auth.a934d963.js",
+            "assets/auth.187cabc7.js",
           ]
         ),
       children: [
@@ -5216,13 +5216,13 @@ const Mu = [
           name: "login",
           component: () =>
             lt(
-              () => import("./Login.0b48cde4.js"),
+              () => import("./Login.65799558.js"),
               [
-                "assets/Login.0b48cde4.js",
+                "assets/Login.65799558.js",
                 "assets/Login.411de2f7.css",
-                "assets/index.0b576dc2.js",
-                "assets/auth.a934d963.js",
-                "assets/index.5913c7f2.js",
+                "assets/index.c46e4d2d.js",
+                "assets/auth.187cabc7.js",
+                "assets/index.72bcf63d.js",
               ]
             ),
         },
@@ -5231,12 +5231,12 @@ const Mu = [
           name: "signup",
           component: () =>
             lt(
-              () => import("./Signup.cffc9992.js"),
+              () => import("./Signup.a88ffa70.js"),
               [
-                "assets/Signup.cffc9992.js",
+                "assets/Signup.a88ffa70.js",
                 "assets/Signup.a5ffee21.css",
-                "assets/index.5913c7f2.js",
-                "assets/auth.a934d963.js",
+                "assets/index.72bcf63d.js",
+                "assets/auth.187cabc7.js",
               ]
             ),
         },

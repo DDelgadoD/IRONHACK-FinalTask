@@ -1,7 +1,7 @@
-import { l as r } from "./index.4bfbbcf5.js";
-import { u as c } from "./auth.a934d963.js";
-import { g as i, l, a as n, d, c as u } from "./index.5913c7f2.js";
-const k = r("tasks", {
+import { l as r } from "./index.be43a535.js";
+import { u as c } from "./auth.187cabc7.js";
+import { g as i, l, a as n, d, c as u } from "./index.72bcf63d.js";
+const p = r("tasks", {
     state: () => ({ loadedSupa: !1, tasks: [], discarded: !1, completed: !1 }),
     actions: {
       init(s) {
@@ -42,7 +42,7 @@ const k = r("tasks", {
       strategies: [{ key: "tasks", storage: localStorage }],
     },
   }),
-  t = k(),
+  t = p(),
   a = c(),
   g = async (s) => {
     const e = await l(s.value.email.content, s.value.password.content);
@@ -56,7 +56,7 @@ const k = r("tasks", {
   h = async () => {
     let s;
     return (
-      t.loaded == !1
+      t.loadedSupa == !1
         ? ((s = await i()), t.init(s), console.log("from supa: "))
         : ((s = t.getTasks()), console.log("from local: ")),
       console.log(s),
@@ -77,4 +77,4 @@ const k = r("tasks", {
   b = () => {
     t.comp();
   };
-export { T as a, S as b, b as c, y as d, w as e, g as f, h as i, k as u };
+export { T as a, S as b, b as c, y as d, w as e, g as f, h as i, p as u };

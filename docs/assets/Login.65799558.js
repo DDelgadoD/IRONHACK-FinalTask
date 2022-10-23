@@ -10,10 +10,10 @@ import {
   y as c,
   p as h,
   j as g,
-} from "./index.4bfbbcf5.js";
-import { f as w } from "./index.0b576dc2.js";
-import "./auth.a934d963.js";
-import "./index.5913c7f2.js";
+} from "./index.be43a535.js";
+import { f as w } from "./index.c46e4d2d.js";
+import "./auth.187cabc7.js";
+import "./index.72bcf63d.js";
 const y = "/IRONHACK-FinalTask/assets/flying.1ae98977.png";
 const e = (a) => (h("data-v-2197992a"), (a = a()), g(), a),
   b = { class: "form-container" },

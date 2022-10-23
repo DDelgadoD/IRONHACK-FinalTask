@@ -1,4 +1,4 @@
-import { l as s } from "./index.4bfbbcf5.js";
+import { l as s } from "./index.be43a535.js";
 const o = s("auth", {
   state: () => ({ isAuth: !1, user: "" }),
   actions: {

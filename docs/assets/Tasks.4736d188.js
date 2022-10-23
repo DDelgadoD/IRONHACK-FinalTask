@@ -1,4 +1,4 @@
-import { b as Ns, e as Ws } from "./index.0b576dc2.js";
+import { b as Ns, e as Ws } from "./index.c46e4d2d.js";
 import {
   _ as It,
   b as ae,
@@ -13,7 +13,7 @@ import {
   F as Fs,
   n as Cs,
   e as Is,
-} from "./index.4bfbbcf5.js";
+} from "./index.be43a535.js";
 const Ls = "/IRONHACK-FinalTask/assets/reloj.05b499f9.svg",
   Us = "/IRONHACK-FinalTask/assets/editar.1669d2c7.svg",
   Hs = "/IRONHACK-FinalTask/assets/completo.fbde7499.svg",

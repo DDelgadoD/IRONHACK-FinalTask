@@ -1,4 +1,4 @@
-import { m as ae } from "./index.4bfbbcf5.js";
+import { m as ae } from "./index.be43a535.js";
 function Ye(i, e) {
   for (var t = 0; t < e.length; t++) {
     const r = e[t];
@@ -378,7 +378,7 @@ var te = { exports: {} };
         var f = new Uint8Array(l.byteLength);
         return f.set(new Uint8Array(l)), f.buffer;
       }
-      function N() {
+      function B() {
         return (
           (this.bodyUsed = !1),
           (this._initBody = function (l) {
@@ -453,10 +453,10 @@ var te = { exports: {} };
         var f = l.toUpperCase();
         return Ge.indexOf(f) > -1 ? f : l;
       }
-      function M(l, f) {
+      function N(l, f) {
         f = f || {};
         var _ = f.body;
-        if (l instanceof M) {
+        if (l instanceof N) {
           if (l.bodyUsed) throw new TypeError("Already read");
           (this.url = l.url),
             (this.credentials = l.credentials),
@@ -479,8 +479,8 @@ var te = { exports: {} };
           throw new TypeError("Body not allowed for GET or HEAD requests");
         this._initBody(_);
       }
-      M.prototype.clone = function () {
-        return new M(this, { body: this._bodyInit });
+      N.prototype.clone = function () {
+        return new N(this, { body: this._bodyInit });
       };
       function We(l) {
         var f = new FormData();
@@ -514,7 +514,7 @@ var te = { exports: {} };
           f
         );
       }
-      N.call(M.prototype);
+      B.call(N.prototype);
       function I(l, f) {
         f || (f = {}),
           (this.type = "default"),
@@ -525,7 +525,7 @@ var te = { exports: {} };
           (this.url = f.url || ""),
           this._initBody(l);
       }
-      N.call(I.prototype),
+      B.call(I.prototype),
         (I.prototype.clone = function () {
           return new I(this._bodyInit, {
             status: this.status,
@@ -557,7 +557,7 @@ var te = { exports: {} };
       }
       function fe(l, f) {
         return new Promise(function (_, $) {
-          var j = new M(l, f);
+          var j = new N(l, f);
           if (j.signal && j.signal.aborted)
             return $(new o.DOMException("Aborted", "AbortError"));
           var w = new XMLHttpRequest();
@@ -605,9 +605,9 @@ var te = { exports: {} };
       return (
         (fe.polyfill = !0),
         n.fetch ||
-          ((n.fetch = fe), (n.Headers = p), (n.Request = M), (n.Response = I)),
+          ((n.fetch = fe), (n.Headers = p), (n.Request = N), (n.Response = I)),
         (o.Headers = p),
-        (o.Request = M),
+        (o.Request = N),
         (o.Response = I),
         (o.fetch = fe),
         Object.defineProperty(o, "__esModule", { value: !0 }),
@@ -1211,17 +1211,17 @@ const vt = "websocket",
     license: At,
   };
 var It = Pt.version,
-  J;
-if (typeof globalThis == "object") J = globalThis;
+  M;
+if (typeof globalThis == "object") M = globalThis;
 else
   try {
-    J = pt();
+    M = pt();
   } catch {
   } finally {
-    if ((!J && typeof window < "u" && (J = window), !J))
+    if ((!M && typeof window < "u" && (M = window), !M))
       throw new Error("Could not determine global this");
   }
-var re = J.WebSocket || J.MozWebSocket,
+var re = M.WebSocket || M.MozWebSocket,
   Dt = It;
 function Ue(i, e) {
   var t;
@@ -1269,13 +1269,13 @@ var ge;
 (function (i) {
   i.websocket = "websocket";
 })(ge || (ge = {}));
-var H;
+var J;
 (function (i) {
   (i.Connecting = "connecting"),
     (i.Open = "open"),
     (i.Closing = "closing"),
     (i.Closed = "closed");
-})(H || (H = {}));
+})(J || (J = {}));
 class Fe {
   constructor(e, t) {
     (this.callback = e),
@@ -1982,15 +1982,15 @@ class Oe {
             if (["broadcast", "presence", "postgres_changes"].includes(o))
               if ("id" in y) {
                 const S = y.id,
-                  N =
+                  B =
                     (p = y.filter) === null || p === void 0 ? void 0 : p.event;
                 return (
                   S &&
                   ((g = t.ids) === null || g === void 0
                     ? void 0
                     : g.includes(S)) &&
-                  (N === "*" ||
-                    (N == null ? void 0 : N.toLocaleLowerCase()) ===
+                  (B === "*" ||
+                    (B == null ? void 0 : B.toLocaleLowerCase()) ===
                       ((v = t.data) === null || v === void 0
                         ? void 0
                         : v.type.toLocaleLowerCase()))
@@ -2251,17 +2251,17 @@ class Kt {
   connectionState() {
     switch (this.conn && this.conn.readyState) {
       case Q.connecting:
-        return H.Connecting;
+        return J.Connecting;
       case Q.open:
-        return H.Open;
+        return J.Open;
       case Q.closing:
-        return H.Closing;
+        return J.Closing;
       default:
-        return H.Closed;
+        return J.Closed;
     }
   }
   isConnected() {
-    return this.connectionState() === H.Open;
+    return this.connectionState() === J.Open;
   }
   channel(e, t = { config: {} }) {
     this.isConnected() || this.connect();
@@ -2550,7 +2550,7 @@ function we(i, e, t, r) {
     return he(i, "GET", e, t, r);
   });
 }
-function q(i, e, t, r, s) {
+function H(i, e, t, r, s) {
   return K(this, void 0, void 0, function* () {
     return he(i, "POST", e, r, s, t);
   });
@@ -2657,7 +2657,7 @@ class ir {
     return D(this, void 0, void 0, function* () {
       try {
         return {
-          data: yield q(
+          data: yield H(
             this.fetch,
             `${this.url}/object/move`,
             { bucketId: this.bucketId, sourceKey: e, destinationKey: t },
@@ -2676,7 +2676,7 @@ class ir {
       try {
         return {
           data: {
-            path: (yield q(
+            path: (yield H(
               this.fetch,
               `${this.url}/object/copy`,
               { bucketId: this.bucketId, sourceKey: e, destinationKey: t },
@@ -2695,7 +2695,7 @@ class ir {
     return D(this, void 0, void 0, function* () {
       try {
         const s = this._getFinalPath(e);
-        let n = yield q(
+        let n = yield H(
           this.fetch,
           `${this.url}/object/sign/${s}`,
           { expiresIn: t },
@@ -2718,7 +2718,7 @@ class ir {
   createSignedUrls(e, t, r) {
     return D(this, void 0, void 0, function* () {
       try {
-        const s = yield q(
+        const s = yield H(
             this.fetch,
             `${this.url}/object/sign/${this.bucketId}`,
             { expiresIn: t, paths: e },
@@ -2796,7 +2796,7 @@ class ir {
           prefix: e || "",
         });
         return {
-          data: yield q(
+          data: yield H(
             this.fetch,
             `${this.url}/object/list/${this.bucketId}`,
             s,
@@ -2891,7 +2891,7 @@ class ar {
     return G(this, void 0, void 0, function* () {
       try {
         return {
-          data: yield q(
+          data: yield H(
             this.fetch,
             `${this.url}/bucket`,
             { id: e, name: e, public: t.public },
@@ -2927,7 +2927,7 @@ class ar {
     return G(this, void 0, void 0, function* () {
       try {
         return {
-          data: yield q(
+          data: yield H(
             this.fetch,
             `${this.url}/bucket/${e}/empty`,
             {},
@@ -3336,7 +3336,7 @@ function V(i) {
   const r = (e = i.user) !== null && e !== void 0 ? e : i;
   return { data: { session: t, user: r }, error: null };
 }
-function B(i) {
+function q(i) {
   var e;
   return {
     data: { user: (e = i.user) !== null && e !== void 0 ? e : i },
@@ -3451,7 +3451,7 @@ class Pr {
           body: { email: e, data: t.data },
           headers: this.headers,
           redirectTo: t.redirectTo,
-          xform: B,
+          xform: q,
         });
       } catch (r) {
         if (O(r)) return { data: { user: null }, error: r };
@@ -3488,7 +3488,7 @@ class Pr {
         return yield E(this.fetch, "POST", `${this.url}/admin/users`, {
           body: e,
           headers: this.headers,
-          xform: B,
+          xform: q,
         });
       } catch (t) {
         if (O(t)) return { data: { user: null }, error: t };
@@ -3518,7 +3518,7 @@ class Pr {
       try {
         return yield E(this.fetch, "GET", `${this.url}/admin/users/${e}`, {
           headers: this.headers,
-          xform: B,
+          xform: q,
         });
       } catch (t) {
         if (O(t)) return { data: { user: null }, error: t };
@@ -3532,7 +3532,7 @@ class Pr {
         return yield E(this.fetch, "PUT", `${this.url}/admin/users/${e}`, {
           body: t,
           headers: this.headers,
-          xform: B,
+          xform: q,
         });
       } catch (r) {
         if (O(r)) return { data: { user: null }, error: r };
@@ -3545,7 +3545,7 @@ class Pr {
       try {
         return yield E(this.fetch, "DELETE", `${this.url}/admin/users/${e}`, {
           headers: this.headers,
-          xform: B,
+          xform: q,
         });
       } catch (t) {
         if (O(t)) return { data: { user: null }, error: t };
@@ -3561,7 +3561,7 @@ class Pr {
             this.fetch,
             "GET",
             `${this.url}/admin/users/${e.userId}/factors`,
-            { headers: this.headers, xform: B }
+            { headers: this.headers }
           ),
           error: null,
         };
@@ -3579,7 +3579,7 @@ class Pr {
             this.fetch,
             "DELETE",
             `${this.url}/admin/users/${e.userId}/factors/${e.id}`,
-            { headers: this.headers, xform: B }
+            { headers: this.headers }
           ),
           error: null,
         };
@@ -3590,7 +3590,7 @@ class Pr {
     });
   }
 }
-const Ir = "2.2.0",
+const Ir = "2.2.1",
   Dr = "http://localhost:9999",
   Cr = "supabase.auth.token",
   Ur = { "X-Client-Info": `gotrue-js/${Ir}` },
@@ -4000,7 +4000,7 @@ class Nr {
         return yield E(this.fetch, "GET", `${this.url}/user`, {
           headers: this.headers,
           jwt: e,
-          xform: B,
+          xform: q,
         });
       } catch (s) {
         if (O(s)) return { data: { user: null }, error: s };
@@ -4019,7 +4019,7 @@ class Nr {
             this.fetch,
             "PUT",
             `${this.url}/user`,
-            { headers: this.headers, body: e, jwt: s.access_token, xform: B }
+            { headers: this.headers, body: e, jwt: s.access_token, xform: q }
           );
         if (o) throw o;
         return (

@@ -43,7 +43,7 @@ export const desconecta = async () => {
 export const initTasks = async () => {
   let tasks;
 
-  if (taskStore.loaded == false) {
+  if (taskStore.loadedSupa == false) {
     tasks = await getTasks();
     taskStore.init(tasks);
     console.log("from supa: ");

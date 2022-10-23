@@ -5,7 +5,7 @@ import {
   d as $3,
   c as H3,
   a as K3,
-} from "./index.0b576dc2.js";
+} from "./index.c46e4d2d.js";
 import {
   _ as V0,
   r as n2,
@@ -24,9 +24,9 @@ import {
   j as J3,
   k as tt,
   F as et,
-} from "./index.4bfbbcf5.js";
-import { u as it } from "./auth.a934d963.js";
-import "./index.5913c7f2.js";
+} from "./index.be43a535.js";
+import { u as it } from "./auth.187cabc7.js";
+import "./index.72bcf63d.js";
 const rt = "/IRONHACK-FinalTask/assets/hogar.695494ed.png",
   at = "/IRONHACK-FinalTask/assets/papelera-color.d6df6a0e.png",
   nt = "/IRONHACK-FinalTask/assets/papelera.a1f24fea.png",
