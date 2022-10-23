@@ -2,12 +2,12 @@
     <transition name="modal-fade">
       <div class="modal-overlay" @click="$emit('close-modal')">
         <div class="mymodal" @click.stop>
-          <img class="check" src="../assets/2854.svg" alt="" />
+          <img class="check" src="" alt="" />
           <h6>No more contacts</h6>
           <p>You have added all the contacts</p>
         </div>
         <div class="close" @click="$emit('close-modal')">
-          <img class="close-img" src="../assets/close-icon.svg" alt="" />
+          <img class="close-img" src="../assets/cerrar.svg" alt="" />
         </div>
       </div>
     </transition>
