@@ -1,6 +1,6 @@
 <template>
   <TimeLine :loaded="loaded" :tasks="tasksTime" />
-  <Tasks :loaded="loaded" :tasks="tasksOK" />
+  <Tasks :title="title" :loaded="loaded" :tasks="tasksOK" />
 </template>
 
 <script setup>
@@ -16,6 +16,7 @@ const tasks = ref(undefined);
 const tasksOK = ref(undefined);
 const tasksTime = ref(undefined);
 const tasksF = ref({ discarded: [], completed: [], active: [] });
+const title = ref("Tareas en Curso")
 
 onBeforeMount(async () => {
   tasks.value = await initTasks();

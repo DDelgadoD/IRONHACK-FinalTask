@@ -1,6 +1,7 @@
 <template>
   <Navbar />
   <RouterView />
+  
   <Footer />
 </template>
 
@@ -8,7 +9,8 @@
 import Navbar from "../components/Navbar.vue";
 import Footer from "../components/Footer.vue";
 
-import { onBeforeMount } from "vue";
+
+import { onBeforeMount} from "vue";
 import { useAuthStore } from "../store/auth";
 import router from "../router";
 

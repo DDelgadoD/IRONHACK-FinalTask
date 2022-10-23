@@ -1,5 +1,5 @@
 <template>
-  <Tasks :loaded="loaded" :tasks="tasksC" />
+  <Tasks :title="title" :loaded="loaded" :tasks="tasksC" />
 </template>
 <script setup>
 import Tasks from "./Tasks.vue";
@@ -11,6 +11,7 @@ const loaded = ref(false);
 const tasks = ref(undefined);
 const tasksC = ref(undefined);
 const tasksF = ref({ discarded: [], completed: [], active: [] });
+const title = ref("Tareas Completadas")
 
 onBeforeMount(async () => {
   tasks.value = await initTasks();

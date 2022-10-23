@@ -18,7 +18,7 @@
             {{ moment(props.time).format("D-M-Y, hh:mm:ss") }}
           </p>
 
-          <div @click="$emit('edit-modal')">
+          <div @click="edit(props.id)">
             <img class="ok-edit-img" src="../assets/editar.svg" alt="" />
           </div>
           <div @click="comp(props.id)">
@@ -31,6 +31,7 @@
       <img class="close-img" src="../assets/cerrar.svg" alt="" />
     </div>
   </div>
+  <Modal v-show="showModal" @close-modal="showModal = false" />
 </template>
 
 <script setup>
@@ -39,10 +40,12 @@
 //TODO: poner basura para las tareas eliminadas
 //TODO: poner bandera de meta para tareas completadas
 
-import { defineProps } from "vue";
+import { defineProps, ref } from "vue";
 import { discTask, compTask } from "../APIStore";
 import moment from "moment";
+import Modal from '../components/Modal.vue'
 
+const showModal= ref(false);
 const props = defineProps({
   id: Number,
   title: String,
@@ -59,6 +62,11 @@ const comp = (id) => {
   compTask(id);
   alert("completed!", id);
 };
+
+const edit = (id) => {
+    showModal.value = true;
+};
+
 </script>
 
 <style scoped>
