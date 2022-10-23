@@ -57,10 +57,10 @@
 </template>
 
 <script setup>
-import router from "../router";
+import router from "../../router";
 import { ref } from "vue";
-import { signup } from "../API";
-import { useAuthStore } from "../store/auth";
+import { signup } from "../../API";
+import { useAuthStore } from "../../store/auth";
 
 const authStore = useAuthStore();
 

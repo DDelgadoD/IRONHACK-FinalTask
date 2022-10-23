@@ -31,7 +31,7 @@
         <a class="tip-link" href="">Recuperar</a>
       </div>
       <div class="form-img">
-        <img src="../assets/flying.png" alt="Flying!" />
+        <img src="../../assets/flying.png" alt="Flying!" />
       </div>
     </div>
   </div>
@@ -39,7 +39,7 @@
 <script setup>
 import { useRouter } from "vue-router";
 import { ref } from "vue";
-import { conecta } from "../APIStore";
+import { conecta } from "../../APIStore";
 
 const router = useRouter();
 

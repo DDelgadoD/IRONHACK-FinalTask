@@ -1,6 +1,6 @@
 <template>
     <transition name="modal-fade">
-      <div class="modal-overlay" @click="$emit('close-modal')">
+      <div class="modal-overlay">
         <div class="mymodal" @click.stop>
           <img class="check" src="" alt="" />
           <h6>No more contacts</h6>
@@ -48,18 +48,7 @@
     width: 25px;
   }
   
-  .check {
-    width: 300px;
-  }
-  
-  h6 {
-    font-weight: 500;
-    font-size: 28px;
-    margin: 20px 0;
-  }
-  
   p {
-    /* font-weight: 500; */
     font-size: 16px;
     margin: 20px 0;
   }

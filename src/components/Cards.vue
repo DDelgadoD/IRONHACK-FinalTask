@@ -1,34 +1,34 @@
 <template>
   <div class="card-container d-flex">
-    <div class="card day-card">
+    <div class="card-c day-card">
       <div class="card-content">
         <div class="card-title">
           <img
-            v-if="props.time"
+            v-if="props.card.max_time"
             class="ok-edit-img"
             src="../assets/reloj.svg"
             alt=""
           />
-          {{ props.title }}
+          {{ props.card.title }}
         </div>
-        <div class="card-body">{{ props.body }}</div>
+        <div class="card-body">{{ props.card.content }}</div>
 
         <div class="d-flex justify-content-end w-100 align-self-baseline">
-          <p v-if="props.time" class="card-time me-auto align-middle">
+          <p v-if="props.card.max_time" class="card-time me-auto align-middle">
             {{ moment(props.time).format("D-M-Y, hh:mm:ss") }}
           </p>
 
-          <div @click="edit(props.id)">
+          <div v-if="props.buttons.edit" @click="edit(props.card.id)">
             <img class="ok-edit-img" src="../assets/editar.svg" alt="" />
           </div>
-          <div @click="comp(props.id)">
+          <div v-if="props.buttons.completed" @click="comp(props.card.id)">
             <img class="ok-edit-img" src="../assets/completo.svg" alt="" />
           </div>
         </div>
       </div>
     </div>
-    <div class="close" @click="del(props.id)">
-      <img class="close-img" src="../assets/cerrar.svg" alt="" />
+    <div class="x-but" @click="del(props.card.id)">
+      <img class="x-img" src="../assets/cerrar.svg" alt="" />
     </div>
   </div>
   <Modal v-show="showModal" @close-modal="showModal = false" />
@@ -47,10 +47,8 @@ import Modal from '../components/Modal.vue'
 
 const showModal= ref(false);
 const props = defineProps({
-  id: Number,
-  title: String,
-  body: String,
-  time: String,
+  card: Object,
+  buttons: Object
 });
 
 const del = (id) => {
@@ -79,12 +77,15 @@ const edit = (id) => {
   box-shadow: 0 0 10px 5px #e0cb48, 0 0 12px 6px #f6eaf2, 0 0 15px 12px #e2d92b,
     0 0 20px 15px #ff145c;
   transition: box-shadow 0.5s linear;
+  border-radius: 2%;
 }
 
-.card {
+.card-c {
   display: flex;
   flex-direction: column;
   width: 100%;
+  border: solid 1px black;
+  border-radius: 2%;
 }
 
 .day-card {
@@ -132,13 +133,13 @@ const edit = (id) => {
   margin: 5%;
 }
 
-.close {
-  position: relative;
+.x-but {
+  
   margin: -12px -12px 0%;
   cursor: pointer;
 }
 
-.close-img {
+.x-img {
   width: 25px;
 }
 

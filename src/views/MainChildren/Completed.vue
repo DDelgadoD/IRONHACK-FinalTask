@@ -1,17 +1,21 @@
 <template>
-  <Tasks :title="title" :loaded="loaded" :tasks="tasksC" />
+  <Tasks :title="title" :loaded="loaded" :tasks="tasksC" :buttons="buttons"/>
 </template>
 <script setup>
-import Tasks from "./Tasks.vue";
+import Tasks from "../../components/Tasks.vue";
 import { ref, onBeforeMount } from "vue";
 
-import { initTasks, disc } from "../APIStore";
+import { initTasks, disc } from "../../APIStore";
 
 const loaded = ref(false);
 const tasks = ref(undefined);
 const tasksC = ref(undefined);
 const tasksF = ref({ discarded: [], completed: [], active: [] });
 const title = ref("Tareas Completadas")
+const buttons = ref({
+  "edit": true,
+  "completed": false
+})
 
 onBeforeMount(async () => {
   tasks.value = await initTasks();

@@ -1,14 +1,14 @@
 <template>
   <TimeLine :loaded="loaded" :tasks="tasksTime" />
-  <Tasks :title="title" :loaded="loaded" :tasks="tasksOK" />
+  <Tasks :title="title" :loaded="loaded" :tasks="tasksOK" :buttons="buttons"/>
 </template>
 
 <script setup>
-import TimeLine from "../components/TimeLine.vue";
-import Tasks from "../components/Tasks.vue";
+import TimeLine from "../../components/TimeLine.vue";
+import Tasks from "../../components/Tasks.vue";
 
 import { ref, onBeforeMount } from "vue";
-import { initTasks } from "../APIStore";
+import { initTasks } from "../../APIStore";
 
 const loaded = ref(false);
 
@@ -17,6 +17,10 @@ const tasksOK = ref(undefined);
 const tasksTime = ref(undefined);
 const tasksF = ref({ discarded: [], completed: [], active: [] });
 const title = ref("Tareas en Curso")
+const buttons = ref({
+  "edit": true,
+  "completed": true
+})
 
 onBeforeMount(async () => {
   tasks.value = await initTasks();

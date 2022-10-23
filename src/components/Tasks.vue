@@ -1,16 +1,13 @@
 <template>
-  <div class="container day-case">
+  <div v-if="loaded" class="container day-case">
     <h1>{{props.title}}</h1>
     <div
-      v-if="loaded"
       class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4"
     >
       <div v-for="task in tasks" class="col mb-4">
         <Cards
-          :id="task.id"
-          :title="task.title"
-          :body="task.content"
-          :time="task.max_time"
+          :card= "task" 
+          :buttons = "buttons"
         />
       </div>
     </div>
@@ -18,12 +15,15 @@
 </template>
 <script setup>
 import Cards from "../components/Cards.vue";
+import { ref } from "vue";
 
 const props = defineProps({
   tasks: Object,
   loaded: Boolean,
-  title: String
+  title: String,
+  buttons: Object
 });
+
 </script>
 
 <style scoped>
