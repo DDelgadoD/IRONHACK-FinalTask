@@ -37,3 +37,11 @@ body {
   background-image: var(--day-bg);
   color: black;
 }
+
+.vue-horizontal-timeline .timeline {
+  padding: 30px 0 !important;
+}
+
+.vue-horizontal-timeline{
+  box-shadow: none !important;
+}
