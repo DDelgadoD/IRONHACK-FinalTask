@@ -15,7 +15,7 @@
 
         <div class="d-flex justify-content-end w-100 align-self-baseline">
           <p v-if="props.card.max_time" class="card-time me-auto align-middle">
-            {{ moment(props.time).format("D-M-Y, hh:mm:ss") }}
+            {{ props.card.max_time_format }}
           </p>
 
           <div v-if="props.buttons.edit" @click="edit(props.card.id)">
@@ -27,11 +27,14 @@
         </div>
       </div>
     </div>
-    <div class="x-but" @click="del(props.card.id)">
+    <div v-if="props.buttons.destroy" class="x-but" @click="del(props.card.id, props.card.title)">
       <img class="x-img" src="../assets/cerrar.svg" alt="" />
     </div>
+    <div v-else class="x-but" @click="trash(props.card.id, props.card.title)">
+      <img class="x-img gray" src="../assets/cerrar.svg" alt="" />
+    </div>
   </div>
-  <Modal v-show="showModal" @close-modal="showModal = false" />
+  <Modal :content="contentModal" v-show="showModal" @close-modal="showModal = false" />
 </template>
 
 <script setup>
@@ -40,30 +43,37 @@
 //TODO: poner basura para las tareas eliminadas
 //TODO: poner bandera de meta para tareas completadas
 
-import { defineProps, ref } from "vue";
+import { defineProps, ref, watch } from "vue";
 import { discTask, compTask } from "../APIStore";
-import moment from "moment";
 import Modal from '../components/Modal.vue'
 
-const showModal= ref(false);
+const showModal = ref(false);
+const contentModal = ref({
+  text: 'Hello' 
+})
 const props = defineProps({
   card: Object,
   buttons: Object
 });
 
-const del = (id) => {
+const trash = (id, title) => {
   discTask(id);
-  alert("deleted", id);
+  contentModal.value = {text:`Tarea "${title}" enviada a la papelera!`}
+  showModal.value = true;
 };
 
-const comp = (id) => {
+const comp = (id, title) => {
   compTask(id);
-  alert("completed!", id);
+  contentModal.value = {text:`Tarea "${title}"" completada!`}
+  showModal.value = true;
 };
 
 const edit = (id) => {
-    showModal.value = true;
+  contentModal.value = {text:'Hello'}
+  showModal.value = true;
 };
+
+
 
 </script>
 
@@ -78,6 +88,7 @@ const edit = (id) => {
     0 0 20px 15px #ff145c;
   transition: box-shadow 0.5s linear;
   border-radius: 2%;
+  transform: scale(1.5);
 }
 
 .card-c {
@@ -134,13 +145,16 @@ const edit = (id) => {
 }
 
 .x-but {
-  
   margin: -12px -12px 0%;
   cursor: pointer;
 }
 
 .x-img {
   width: 25px;
+}
+
+.gray{
+  filter:grayscale()
 }
 
 .ok-edit-img {

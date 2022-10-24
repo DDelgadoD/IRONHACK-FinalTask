@@ -13,8 +13,9 @@ const tasksC = ref(undefined);
 const tasksF = ref({ discarded: [], completed: [], active: [] });
 const title = ref("Tareas Completadas")
 const buttons = ref({
-  "edit": true,
-  "completed": false
+  edit: true,
+  completed: false,
+  destroy: false
 })
 
 onBeforeMount(async () => {

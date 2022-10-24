@@ -2,9 +2,7 @@
     <transition name="modal-fade">
       <div class="modal-overlay">
         <div class="mymodal" @click.stop>
-          <img class="check" src="" alt="" />
-          <h6>No more contacts</h6>
-          <p>You have added all the contacts</p>
+          {{ props.content.text}}
         </div>
         <div class="close" @click="$emit('close-modal')">
           <img class="close-img" src="../assets/cerrar.svg" alt="" />
@@ -14,6 +12,11 @@
   </template>
   
   <script setup>
+import { defineProps} from "vue";
+
+const props = defineProps({
+  content: Object
+});
 
   </script>
   
@@ -32,7 +35,6 @@
   .mymodal {
     text-align: center;
     background-color: white;
-    height: 450px;
     width: 450px;
     margin-top: 10%;
     padding: 60px 0;
@@ -40,7 +42,7 @@
   }
   
   .close {
-    margin: 10% 0 0 16px;
+    margin: 11% 0 0 -50px;
     cursor: pointer;
   }
   
@@ -53,14 +55,5 @@
     margin: 20px 0;
   }
   
- 
-  .modal-fade-enter,
-  .modal-fade-leave-to {
-    opacity: 0;
-  }
-  
-  .modal-fade-enter-active,
-  .modal-fade-leave-active {
-    transition: opacity 0.5s ease;
-  }
+
   </style>
