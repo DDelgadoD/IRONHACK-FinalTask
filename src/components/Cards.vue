@@ -6,7 +6,7 @@
           <img
             v-if="props.card.max_time"
             class="ok-edit-img"
-            src="../assets/reloj.svg"
+            src="../assets/card/reloj.svg"
             alt=""
           />
           {{ props.card.title }}
@@ -19,19 +19,19 @@
           </p>
 
           <div v-if="props.buttons.edit" @click="edit(props.card.id)">
-            <img class="ok-edit-img" src="../assets/editar.svg" alt="" />
+            <img class="ok-edit-img" src="../assets/card/editar.svg" alt="" />
           </div>
           <div v-if="props.buttons.completed" @click="comp(props.card.id)">
-            <img class="ok-edit-img" src="../assets/completo.svg" alt="" />
+            <img class="ok-edit-img" src="../assets/card/completo.svg" alt="" />
           </div>
         </div>
       </div>
     </div>
     <div v-if="props.buttons.destroy" class="x-but" @click="del(props.card.id, props.card.title)">
-      <img class="x-img" src="../assets/cerrar.svg" alt="" />
+      <img class="x-img" src="../assets/card/cerrar.svg" alt="" />
     </div>
     <div v-else class="x-but" @click="trash(props.card.id, props.card.title)">
-      <img class="x-img gray" src="../assets/cerrar.svg" alt="" />
+      <img class="x-img gray" src="../assets/card/cerrar.svg" alt="" />
     </div>
   </div>
   <Modal :content="contentModal" v-show="showModal" @close-modal="showModal = false" />

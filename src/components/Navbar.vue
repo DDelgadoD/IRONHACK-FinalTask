@@ -2,8 +2,8 @@
   <nav  class="navbar navbar-expand-lg navbar-light background">
     <div class="container-fluid">
       <a class="navbar-brand">
-        <img class="icono" src="../assets/icon64.png" alt="Icono App" />
-        <img class="logo" src="../assets/title.png" alt="ControlAPP" />
+        <img class="icono" src="../assets/navbar/icon64.png" alt="Icono App" />
+        <img class="logo" src="../assets/navbar/title.png" alt="ControlAPP" />
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,26 +13,26 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <router-link class="nav-link active" aria-current="page" :to="{ name: 'home' }">
-              <img class="icono" src="../assets/hogar.png" /> Home
+              <img class="icono" src="../assets/navbar/hogar.png" /> Home
             </router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" aria-current="page" to="/trash">
-              <img  v-if="discarded == true" class="icono" src="../assets/papelera-color.png" />
-              <img v-else class="icono" src="../assets/papelera.png" />
+              <img  v-if="discarded == true" class="icono" src="../assets/navbar/papelera-color.png" />
+              <img v-else class="icono" src="../assets/navbar/papelera.png" />
               Papelera
             </router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" aria-current="page" to="/completed">
-              <img v-if="completed == true" class="icono" src="../assets/objetivo-color.png" />
-              <img v-else class="icono" src="../assets/objetivo.png" />
+              <img v-if="completed == true" class="icono" src="../assets/navbar/objetivo-color.png" />
+              <img v-else class="icono" src="../assets/navbar/objetivo.png" />
               Completos
             </router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" aria-current="page" to="">
-              <img class="icono" src="../assets/ajuste.png" /> Configuración
+              <img class="icono" src="../assets/navbar/ajuste.png" /> Configuración
             </router-link>
           </li>
         </ul>

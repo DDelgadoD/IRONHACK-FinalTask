@@ -1,8 +1,8 @@
 <template>
   <div class="login">
     <div class="logos">
-      <img class="icono" src="../assets/icon64.png" alt="Icono App" />
-      <img class="logo" src="../assets/title.png" alt="¡YO CONTROLO!" />
+      <img class="icono" src="../assets/auths/icon64.png" alt="Icono App" />
+      <img class="logo" src="../assets/auths/title.png" alt="¡YO CONTROLO!" />
     </div>
     <RouterView />
     <p class="holding">

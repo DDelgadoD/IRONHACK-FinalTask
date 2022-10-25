@@ -31,7 +31,7 @@
         <a class="tip-link" href="">Recuperar</a>
       </div>
       <div class="form-img">
-        <img src="../../assets/flying.png" alt="Flying!" />
+        <img src="../../assets/auths/flying.png" alt="Flying!" />
       </div>
     </div>
   </div>
