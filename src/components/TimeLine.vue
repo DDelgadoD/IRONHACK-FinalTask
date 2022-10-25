@@ -9,8 +9,8 @@
         
         <div :class="i%2 ? 'event2' : 'event1'">
           <div :class="i%2 ? 'event2Bubble' : 'event1Bubble'">
-            {{ task.max_time_format }}
-            {{ task.title }}
+            <div class="max-time">{{ task.max_time_format }}</div>
+            <div class="task-title">{{ task.title }}</div>
           </div>
         </div>
         
@@ -62,8 +62,7 @@ const props = defineProps({
 
 .event1Bubble {
   position: absolute;
-  background-color: rgba(158, 158, 158, 0.1);
-  width: 139px;
+  width: 150px;
   height: 60px;
   top: -80px;
   left: -15px;
@@ -73,8 +72,7 @@ const props = defineProps({
 
 .event2Bubble {
   position: absolute;
-  background-color: rgba(158, 158, 158, 0.1);
-  width: 139px;
+  width: 150px;
   height: 60px;
   left: -105px;
   top: 20px;
@@ -114,10 +112,6 @@ const props = defineProps({
   left: 103px;
   border-top-color: rgba(222, 222, 222, 0.66);
   border-width: 12px;
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
@@ -126,11 +120,18 @@ const props = defineProps({
   left: 103px;
   border-top-color: #F6F6F6;
   border-width: 12px;
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
+.max-time{
+  font-weight: bold;
+  font-size: 1rem;
+  margin:2%;
+  color: white;
+  background-color: rgba(20, 87, 92, 0.5);
+  text-align: center;
+}
+.task-title{
+  text-align: center;
+}
 </style>

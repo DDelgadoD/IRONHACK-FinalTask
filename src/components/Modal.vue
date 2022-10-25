@@ -44,7 +44,6 @@ const props = defineProps({
     margin-top: 10%;
     padding: 60px 0;
     border-radius: 20px;
-    overflow:hidden
     }
   
   .close {

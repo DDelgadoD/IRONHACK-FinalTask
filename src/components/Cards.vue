@@ -31,7 +31,7 @@
       <img class="x-img" src="../assets/card/cerrar.svg" alt="" />
     </div>
     <div v-else class="x-but" @click="trash(props.card.id, props.card.title)">
-      <img class="x-img gray" src="../assets/card/cerrar.svg" alt="" />
+      <img class="x-img" src="../assets/card/cerrar-gris.svg" alt="" />
     </div>
   </div>
   <Modal :content="contentModal" v-show="showModal" @close-modal="showModal = false" />
@@ -78,7 +78,7 @@ const edit = (id) => {
 </script>
 
 <style scoped>
-.card-container {
+.card-container{
   justify-content: center;
   height: 350px;
 }
@@ -150,10 +150,6 @@ const edit = (id) => {
 
 .x-img {
   width: 25px;
-}
-
-.gray{
-  filter:grayscale()
 }
 
 .ok-edit-img {
