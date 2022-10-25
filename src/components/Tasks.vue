@@ -38,7 +38,7 @@ const contentModalTask = ref({
 })
 
 const addTask = () =>{
-  contentModalTask.value = {text:`Tarea enviada a la papelera!`}
+  contentModalTask.value = {text:`Nueva Tarea`}
   showModalTask.value = true;
 } 
 

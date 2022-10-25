@@ -69,7 +69,7 @@ const comp = (id, title) => {
 };
 
 const edit = (id) => {
-  contentModal.value = {text:'Hello'}
+  contentModal.value = {text:'Editar Tarea'}
   showModal.value = true;
 };
 
@@ -88,7 +88,6 @@ const edit = (id) => {
     0 0 20px 15px #ff145c;
   transition: box-shadow 0.5s linear;
   border-radius: 2%;
-  transform: scale(1.5);
 }
 
 .card-c {
