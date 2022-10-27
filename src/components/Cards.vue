@@ -29,13 +29,13 @@
       <img class="x-img" src="../assets/card/cerrar-gris.svg" alt="" />
     </div>
   </div>
-  <Modal :content="contentModal" :edit="modEdit" :confirmDelete="modConf" v-show="showModal" @delete-modal="del"
+  <Modal :content="contentModal" :useForm="modEdit" :confirmDelete="modConf" v-show="showModal" @delete-modal="del"
     @close-modal="closeModal" />
 </template>
 
 <script setup>
 import { defineProps, ref, watch } from "vue";
-import { discTask, compTask, delTask } from "../APIStore";
+import { discTask, compTask, delTask, task} from "../APIStore";
 import Modal from '../components/Modal.vue'
 
 const showModal = ref(false);
@@ -64,8 +64,9 @@ const comp = (id, title) => {
 };
 
 const edit = (id) => {
-  contentModal.value = { text: 'Editar Tarea' }
+  const task1 = task(id)
   modEdit.value = true;
+  contentModal.value = {text:`Edita Tarear`, edit: true, task: task1, taskId: id}
   showModal.value = true;
 };
 
@@ -84,8 +85,8 @@ const del = (id, title) => {
   closeModal()
   contentModal.value = { text: `La Tarea "${title}" eliminada` }
   showModal.value = true;
-
 }
+
 
 const closeModal = () => {
   showModal.value = false;

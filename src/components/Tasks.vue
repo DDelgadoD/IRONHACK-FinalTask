@@ -17,7 +17,7 @@
         />
       </div>
     </div>
-    <Modal :content="contentModalTask" :edit="true" :confirmDelete="false" v-show="showModalTask" @close-modal="showModalTask = false" />
+    <Modal :content="contentModalTask" :useForm="true" :confirmDelete="false" v-show="showModalTask" @close-modal="showModalTask = false" />
   </div>
 </template>
 <script setup>
@@ -38,7 +38,7 @@ const contentModalTask = ref({
 })
 
 const addTask = () =>{
-  contentModalTask.value = {text:`Nueva Tarea`, add: true }
+  contentModalTask.value = {text:`Nueva Tarea`, edit: false, taskId: "" }
   showModalTask.value = true;
 } 
 

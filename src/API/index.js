@@ -44,14 +44,17 @@ export const getTasks = async (select = "*", order = "id", asc = false) => {
   return response.data;
 };
 
-export const updateTask = async (task, where = "id") => {
+export const updateTask = async (task) => {
   const response = await supabase
     .from("Tasks")
     .update({
-      task_title: task.title,
-      task_content: task.content,
+      title: task.title,
+      content: task.content,
+      max_time: task.max_time,
+      discarded: false,
+      completed: false  
     })
-    .eq(where, task.id);
+    .eq("id", task.id);
 
   return response;
 };
@@ -77,4 +80,14 @@ export const completeTask = async (taskId) => {
     .eq("id", taskId);
 
   return response;
+};
+
+export const maxIdTask = async () => {
+  const response = await supabase
+    .from("Tasks")
+    .select("*")
+    .order("id", {ascending: false})
+    .limit(1)
+
+  return response.data[0].id;
 };

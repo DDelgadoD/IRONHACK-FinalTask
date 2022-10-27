@@ -3,22 +3,31 @@
     <div class="modal-overlay">
       <div class="mymodal" @click.stop>
 
-        <div v-if="props.edit">
+        <div v-if="props.useForm">
           <h2> {{ props.content.text }} </h2>
-          <form :form="form" @:submit.prevent="createOrEdit(props.content.add)">
+          <form :form="form" @:submit.prevent="createOrEdit(props.content.taskId, props.content.edit)">
             <div class="form-group">
               <label for="title">Título</label>
+              <input v-if="props.content.edit" :value="props.content.task.title"
+                @input="event => form.title.content = event.target.value"
+                id="title" class="form-control" type="text" required />
+              <input v-else v-model="form.title.content" id="title" class="form-control" type="text" required />
 
-              <input v-model="form.title.content" id="title" class="form-control" type="text" required />
 
               <label for="content">Contenido</label>
+              <textarea v-if="props.content.edit" :value="props.content.task.content" 
+                @input="event => form.content.content = event.target.value" 
+                class="form-control" id="content" rows="3" required />
+              <textarea v-else v-model="form.content.content" class="form-control" id="content" rows="3" required />
 
-              <textarea v-model="form.content.content" class="form-control" id="content" rows="3" required />
+              <label for="datetime">Fecha Límite</label> 
+              <input v-if="props.content.edit" :value="props.content.task.max_time"
+                @input="event => form.max_time.content = event.target.value"
+                class="form-control" id="datetime" type="datetime-local">
+              <input v-else v-model="form.max_time.content" class="form-control" id="datetime"  type="datetime-local">
 
-              <label for="datetime">Fecha Límite</label>
-              <input v-model="form.max_date.content" class="form-control" id="datetime" type="datetime-local">
 
-              <button class="btn">
+              <button class="btn btn-plus">
                 Enviar
               </button>
             </div>
@@ -42,7 +51,7 @@
   
 <script setup>
 import { defineProps, defineEmits, ref } from "vue";
-import { addTask } from "../APIStore";
+import { addTask, editTask } from "../APIStore";
 import { useAuthStore } from "../store/auth";
 
 const authStore = useAuthStore();
@@ -56,7 +65,7 @@ const form = ref({
     content: '',
     error: false
   },
-  max_date: {
+  max_time: {
     content: '',
     error: false
   }
@@ -65,29 +74,37 @@ const form = ref({
 const emit = defineEmits(['close-modal'])
 const props = defineProps({
   content: Object,
-  edit: Boolean,
+  useForm: Boolean,
   confirmDelete: Boolean
 });
 
 const formReset = () => {
   form.value.title.content = "";
   form.value.content.content = "";
-  form.value.max_date.content = ""
+  form.value.max_time.content = ""
 }
 
-const createOrEdit = async (add) => {
-  if (add) {
-    const task = {
-        user_id: authStore.getUser(),
-        title: form.value.title.content,
-        content: form.value.content.content,
-    }
-    if(form.value.max_date.content.length > 0) task.max_time = form.value.max_date.content
-    const response = await addTask(task)
-    
+const createOrEdit = async (taskId, edit) => {
+   const task = {
+    user_id: authStore.getUser(),
+    title: form.value.title.content,
+    content: form.value.content.content,
+    discarded: false,
+    created_at: null,
+    completed: false
   }
+  if (form.value.max_time.content.length > 0 ) task.max_time = form.value.max_time.content
+  
+  if (edit) {
+    if (!form.value.title.content ) task.title = props.content.task.title
+    if (!form.value.content.content) task.content = props.content.task.content
+    if (!form.value.max_time.content) task.max_time = props.content.task.max_time
+    task.id = taskId
+    await editTask(task)
 
-
+  } else {
+    await addTask(task)
+  }
 
   emit('close-modal')
   formReset()
@@ -158,7 +175,7 @@ input:focus {
 }
 
 
-.btn {
+.btn-plus {
   margin: 25px 0;
   font-size: 18px;
   color: #fff;
@@ -170,7 +187,7 @@ input:focus {
   transition: 0.3s ease;
 }
 
-.btn:hover {
+.btn-plus:hover {
   transition: 0.5s ease;
   background: #272346;
   color: #fff;

@@ -42,9 +42,9 @@ onBeforeMount(async () => {
     tasksTime.value.forEach(t => {
       t.max_time_format = moment(t.max_time).format("D-M-Y HH:mm:ss")
     })
-  console.log(tasksTime.value)
-
-
+ 
   loaded.value = true;
+
+
 });
 </script>

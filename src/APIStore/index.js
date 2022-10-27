@@ -7,7 +7,9 @@ import {
   getTasks,
   discardTask,
   completeTask,
-  newTask
+  newTask,
+  maxIdTask, 
+  updateTask
 } from "../API";
 
 const taskStore = useTaskStore();
@@ -47,13 +49,12 @@ export const initTasks = async () => {
   if (taskStore.loadedSupa == false) {
     tasks = await getTasks();
     taskStore.init(tasks);
-    console.log("from supa: ");
+    console.log("from supa");
   } else {
     tasks = taskStore.getTasks();
-    console.log("from local: ");
+    console.log("from local");
   }
-  console.log(tasks);
-  return tasks;
+   return tasks;
 };
 
 // Inicializción de tarea en local o en supabase según toque
@@ -89,13 +90,28 @@ export const comp = () => {
   taskStore.comp();
 };
 
+export const task = (id) =>{
+  return taskStore.getTask(id)
+}
 
 export const addTask = async (task) => {
-  
-  
   const response = await newTask(task);
+  console.log(response)
   if (response.error == null) {
+    task.id = await maxIdTask()
     taskStore.newTask(task);
+  } 
+  return response;
+};
+
+export const editTask = async (task) => {
+  console.log(task.id)
+  const response = await updateTask(task);
+  console.log(response)
+  if (response.error == null) {
+    console.log(task.id)
+    taskStore.deleteTask(task.id);
+    taskStore.newTask(task)
   } 
   return response;
 };
