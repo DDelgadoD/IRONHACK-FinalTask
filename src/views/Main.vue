@@ -17,7 +17,7 @@ const authStore = useAuthStore();
 onBeforeMount(async () => {
   if (!authStore.isAuth == true) {
     console.log("user aren't logged: ¿Dónde vas pimpim?");
-    router.push("/login");
+    router.push({ name: "login" });
   }
 });
 </script>

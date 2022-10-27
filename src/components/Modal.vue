@@ -71,6 +71,9 @@
           </form>
         </div>
         <div v-else>
+          <div v-if="props.content.image">
+            <img :src="props.content.image" width="100" />
+          </div>
           <p>{{ props.content.text }}</p>
           <div v-if="confirmDelete">
             <button

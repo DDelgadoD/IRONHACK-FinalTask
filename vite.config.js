@@ -7,5 +7,15 @@ export default defineConfig({
   base: process.env.NODE_ENV == "production" ? "/IRONHACK-FinalTask/" : "/",
   build: {
     outDir: "docs",
-  },
-});
+    rollupOptions: {
+      output: {
+          entryFileNames: `assets/file_[name].[hash].js`,
+          chunkFileNames: `assets/file_[name].[hash].js`,
+          assetFileNames: `assets/file_[name].[hash].[ext]`,
+      },
+  }
+},
+server: {
+  base: process.env.NODE_ENV === 'production' ? "/IRONHACK-FinalTask/" : '/',
+}
+})

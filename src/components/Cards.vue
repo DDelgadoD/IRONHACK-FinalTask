@@ -52,7 +52,7 @@
 </template>
 
 <script setup>
-import { defineProps, ref, watch } from "vue";
+import { defineProps, ref } from "vue";
 import { discTask, compTask, delTask, task } from "../APIStore";
 import Modal from "../components/Modal.vue";
 

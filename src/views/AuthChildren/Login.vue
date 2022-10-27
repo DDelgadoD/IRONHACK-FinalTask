@@ -26,7 +26,9 @@
         </form>
 
         <p class="tip">¿No tienes tu cuenta? ¡Crea una!</p>
-        <a class="tip-link" href="/signup">Registrarse</a>
+        <RouterLink class="tip-link" :to="{ name: 'signup' }"
+          >Registrarse</RouterLink
+        >
         <p class="tip">¿Te olvidaste tu contraseña?</p>
         <a class="tip-link" href="">Recuperar</a>
       </div>

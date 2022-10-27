@@ -52,20 +52,22 @@
           </button>
         </form>
       </div>
+      <Modal
+        :content="contentModal"
+        :useForm="false"
+        :confirmDelete="false"
+        v-show="showModal"
+        @close-modal="closeModal"
+      />
     </div>
   </div>
 </template>
 
 <script setup>
+import Modal from "../../components/Modal.vue";
 import router from "../../router";
 import { ref } from "vue";
 import { signup } from "../../API";
-import { useAuthStore } from "../../store/auth";
-
-const authStore = useAuthStore();
-
-// TODO: cambiar alert por modal
-// TODO: Poner un tick de "Al hacer tick nos autorizas a ceder tus datos a gente y te da igual [Saber más]"
 
 const form = ref({
   email: {
@@ -86,6 +88,18 @@ const form = ref({
   },
 });
 
+const showModal = ref(false);
+const contentModal = ref({ text: "", image: false });
+
+const closeModal = () => {
+  showModal.value = false;
+};
+
+const openModal = async (textModal, imageModal = false) => {
+  contentModal.value = { text: textModal, image: imageModal };
+  showModal.value = true;
+};
+
 const onSubmit = async () => {
   if (form.value.password.content == form.value.password2.content) {
     const response = await signup(
@@ -93,12 +107,16 @@ const onSubmit = async () => {
       form.value.password.content
     );
 
-    if (response.data.user.id) {
-      alert("Recibirás un email para confirmar tu usuario. ¡Muchas Gracias!");
-      router.push("/login");
-    }
+    openModal(
+      "Recibirás un email con las instrucciones a seguir. ¡Muchas Gracias!",
+      "src/assets/auths/email.png"
+    );
+    setTimeout(() => router.push({ name: "login" }), 1500);
   } else {
-    alert("Las contraseñas no coinciden");
+    openModal(
+      "LAS CONTRASEÑAS NO COINCIDEN",
+      "src/assets/auths/warning-sign.png"
+    );
   }
 };
 </script>
@@ -187,6 +205,7 @@ form {
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
   }
+
   .main {
     flex-direction: column;
     position: relative;
@@ -201,6 +220,7 @@ form {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
   }
+
   .btn {
     margin: 25px 0;
   }
