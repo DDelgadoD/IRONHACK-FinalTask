@@ -3,7 +3,12 @@
     <div class="card-c day-card">
       <div class="card-content">
         <div class="card-title">
-          <img v-if="props.card.max_time" class="ok-edit-img" src="../assets/card/reloj.svg" alt="" />
+          <img
+            v-if="props.card.max_time"
+            class="ok-edit-img"
+            src="../assets/card/reloj.svg"
+            alt=""
+          />
           {{ props.card.title }}
         </div>
         <div class="card-body">{{ props.card.content }}</div>
@@ -16,57 +21,75 @@
           <div v-if="props.buttons.edit" @click="edit(props.card.id)">
             <img class="ok-edit-img" src="../assets/card/editar.svg" alt="" />
           </div>
-          <div v-if="props.buttons.completed" @click="comp(props.card.id, props.card.title)">
+          <div
+            v-if="props.buttons.completed"
+            @click="comp(props.card.id, props.card.title)"
+          >
             <img class="ok-edit-img" src="../assets/card/completo.svg" alt="" />
           </div>
         </div>
       </div>
     </div>
-    <div v-if="props.buttons.destroy" class="x-but" @click="preDel(props.card.id, props.card.title)">
+    <div
+      v-if="props.buttons.destroy"
+      class="x-but"
+      @click="preDel(props.card.id, props.card.title)"
+    >
       <img class="x-img" src="../assets/card/cerrar.svg" alt="" />
     </div>
     <div v-else class="x-but" @click="trash(props.card.id, props.card.title)">
       <img class="x-img" src="../assets/card/cerrar-gris.svg" alt="" />
     </div>
   </div>
-  <Modal :content="contentModal" :useForm="modEdit" :confirmDelete="modConf" v-show="showModal" @delete-modal="del"
-    @close-modal="closeModal" />
+  <Modal
+    :content="contentModal"
+    :useForm="modEdit"
+    :confirmDelete="modConf"
+    v-show="showModal"
+    @delete-modal="del"
+    @close-modal="closeModal"
+  />
 </template>
 
 <script setup>
 import { defineProps, ref, watch } from "vue";
-import { discTask, compTask, delTask, task} from "../APIStore";
-import Modal from '../components/Modal.vue'
+import { discTask, compTask, delTask, task } from "../APIStore";
+import Modal from "../components/Modal.vue";
 
 const showModal = ref(false);
 const contentModal = ref({
-  text: 'Hello'
-})
+  text: "Hello",
+});
 
 const modEdit = ref(false);
 const modConf = ref(false);
 
 const props = defineProps({
   card: Object,
-  buttons: Object
+  buttons: Object,
 });
 
 const trash = (id, title) => {
   discTask(id);
-  contentModal.value = { text: `Tarea "${title}" enviada a la papelera!` }
+  contentModal.value = { text: `Tarea "${title}" enviada a la papelera!` };
   showModal.value = true;
 };
 
 const comp = (id, title) => {
   compTask(id);
-  contentModal.value = { text: `Tarea "${title}"" completada!` }
+  contentModal.value = { text: `Tarea "${title}"" completada!` };
   showModal.value = true;
 };
 
 const edit = (id) => {
-  const task1 = task(id)
+  const task1 = task(id);
   modEdit.value = true;
-  contentModal.value = {text:`Edita Tarear`, edit: true, task: task1, taskId: id}
+  contentModal.value = {
+    text: `Edita Tarear`,
+    edit: true,
+    task: task1,
+    taskId: id,
+  };
   showModal.value = true;
 };
 
@@ -74,26 +97,24 @@ const preDel = (id, title) => {
   contentModal.value = {
     text: ` La Tarea "${title}" será eliminada completamente. ¿Deseas continuar?`,
     taskTitle: title,
-    taskId: id
-  }
+    taskId: id,
+  };
   modConf.value = true;
   showModal.value = true;
-}
+};
 
 const del = (id, title) => {
-  delTask(id)
-  closeModal()
-  contentModal.value = { text: `La Tarea "${title}" eliminada` }
+  delTask(id);
+  closeModal();
+  contentModal.value = { text: `La Tarea "${title}" eliminada` };
   showModal.value = true;
-}
-
+};
 
 const closeModal = () => {
   showModal.value = false;
   modEdit.value = false;
   modConf.value = false;
-}
-
+};
 </script>
 
 <style scoped>

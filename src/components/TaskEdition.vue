@@ -1,34 +1,34 @@
 <template>
-    <form v-on:submit.prevent="createOrEdit(props.add)">
-        <div class="form-group">
-            <label for="title">Título</label>
+  <form v-on:submit.prevent="createOrEdit(props.add)">
+    <div class="form-group">
+      <label for="title">Título</label>
 
-            <input id="title" class="form-control" type="text" placeholder="Título" required/>
+      <input
+        id="title"
+        class="form-control"
+        type="text"
+        placeholder="Título"
+        required
+      />
 
-            <label for="content">Contenido</label>
+      <label for="content">Contenido</label>
 
-            <textarea class="form-control" id="content" rows="3" required />
-            
-            <label for="datetime">Fecha Límite</label>
-            <input class="form-control" id="datetime" type="datetime-local">
+      <textarea class="form-control" id="content" rows="3" required />
 
-            <button class="btn" @click="$emit('close-modal')">
-            Enviar
-          </button>
-        </div>
-    </form>
+      <label for="datetime">Fecha Límite</label>
+      <input class="form-control" id="datetime" type="datetime-local" />
+
+      <button class="btn" @click="$emit('close-modal')">Enviar</button>
+    </div>
+  </form>
 </template>
 <script setup>
 import { defineProps, defineEmits } from "vue";
 
-const emit = defineEmits(['close-modal'])
+const emit = defineEmits(["close-modal"]);
 const props = defineProps({
   add: Boolean,
 });
-
-
-
-
 </script>
 <style scoped>
 form {
@@ -36,7 +36,8 @@ form {
   min-width: 200px;
 }
 
-input, textarea {
+input,
+textarea {
   border-radius: 35px;
   outline: none;
   margin-bottom: 10px;
@@ -55,7 +56,6 @@ input:focus {
   border: 1px solid #0568c1;
 }
 
-
 .btn {
   margin: 25px 0;
   font-size: 18px;
@@ -73,6 +73,4 @@ input:focus {
   background: #272346;
   color: #fff;
 }
-
-
 </style>

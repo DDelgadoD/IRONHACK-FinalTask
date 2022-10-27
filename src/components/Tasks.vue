@@ -1,49 +1,50 @@
 <template>
-  
   <div v-if="loaded" class="container day-case">
-    <div class = "d-flex align-items-center justify-content-between pb-5" >
-      <h1> {{props.title}} </h1>
-      <div v-if="props.title == 'Tareas en Curso'" class="d-flex align-items-center">
-        Añadir Tarea  <img class="icono" src="../assets/nueva.png" @click="addTask"/>
+    <div class="d-flex align-items-center justify-content-between pb-5">
+      <h1>{{ props.title }}</h1>
+      <div
+        v-if="props.title == 'Tareas en Curso'"
+        class="d-flex align-items-center"
+      >
+        Añadir Tarea
+        <img class="icono" src="../assets/nueva.png" @click="addTask" />
       </div>
     </div>
-    <div
-      class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4"
-    >
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
       <div v-for="task in tasks" class="col mb-4">
-        <Cards
-          :card= "task" 
-          :buttons = "buttons"
-        />
+        <Cards :card="task" :buttons="buttons" />
       </div>
     </div>
-    <Modal :content="contentModalTask" :useForm="true" :confirmDelete="false" v-show="showModalTask" @close-modal="showModalTask = false" />
+    <Modal
+      :content="contentModalTask"
+      :useForm="true"
+      :confirmDelete="false"
+      v-show="showModalTask"
+      @close-modal="showModalTask = false"
+    />
   </div>
 </template>
 <script setup>
 import Cards from "../components/Cards.vue";
-import Modal from '../components/Modal.vue';
-import { ref} from "vue";
+import Modal from "../components/Modal.vue";
+import { ref } from "vue";
 
 const props = defineProps({
   tasks: Object,
   loaded: Boolean,
   title: String,
-  buttons: Object
+  buttons: Object,
 });
 
 const showModalTask = ref(false);
 const contentModalTask = ref({
-  text: 'Hello' 
-})
+  text: "Hello",
+});
 
-const addTask = () =>{
-  contentModalTask.value = {text:`Nueva Tarea`, edit: false, taskId: "" }
+const addTask = () => {
+  contentModalTask.value = { text: `Nueva Tarea`, edit: false, taskId: "" };
   showModalTask.value = true;
-} 
-
-
-
+};
 </script>
 
 <style scoped>

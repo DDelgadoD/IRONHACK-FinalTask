@@ -1,34 +1,38 @@
 <template>
-  <Tasks :title="title" :loaded="loaded" :tasks="tasksC" :buttons="buttons"/>
+  <Tasks
+    :title="title"
+    :loaded="loaded"
+    :tasks="taskStore.tasksF.completed"
+    :buttons="buttons"
+  />
 </template>
 <script setup>
 import Tasks from "../../components/Tasks.vue";
-import { ref, onBeforeMount } from "vue";
-
-import { initTasks, disc } from "../../APIStore";
+import { ref, onBeforeMount, watch } from "vue";
+import { useTaskStore } from "../../store/task";
+import { initTasks } from "../../APIStore";
 
 const loaded = ref(false);
-const tasks = ref(undefined);
-const tasksC = ref(undefined);
-const tasksF = ref({ discarded: [], completed: [], active: [] });
-const title = ref("Tareas Completadas")
+const title = ref("Tareas Completadas");
 const buttons = ref({
   edit: true,
   completed: false,
-  destroy: false
-})
+  destroy: false,
+});
+const taskStore = useTaskStore();
+
+const loader = async () => {
+  console.log("loading...");
+  await initTasks();
+  loaded.value = true;
+};
 
 onBeforeMount(async () => {
-  tasks.value = await initTasks();
-  tasks.value.map((t) =>
-    t.discarded
-      ? tasksF.value.discarded.push(t)
-      : t.completed
-      ? tasksF.value.completed.push(t)
-      : tasksF.value.active.push(t)
-  );
-  tasksC.value = tasksF.value.completed;
-  console.log("task Completed: ", tasksF.value);
-  loaded.value = true;
+  await loader();
+});
+
+watch(taskStore.tasks, (newValue) => {
+  console.log("watch");
+  loader();
 });
 </script>

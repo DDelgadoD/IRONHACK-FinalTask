@@ -8,8 +8,8 @@ import {
   discardTask,
   completeTask,
   newTask,
-  maxIdTask, 
-  updateTask
+  maxIdTask,
+  updateTask,
 } from "../API";
 
 const taskStore = useTaskStore();
@@ -54,7 +54,7 @@ export const initTasks = async () => {
     tasks = taskStore.getTasks();
     console.log("from local");
   }
-   return tasks;
+  return tasks;
 };
 
 // Inicializción de tarea en local o en supabase según toque
@@ -82,36 +82,28 @@ export const compTask = async (id) => {
   return response.error;
 };
 
-export const disc = () => {
-  taskStore.disc();
+export const task = (id) => {
+  return taskStore.getTask(id);
 };
-
-export const comp = () => {
-  taskStore.comp();
-};
-
-export const task = (id) =>{
-  return taskStore.getTask(id)
-}
 
 export const addTask = async (task) => {
   const response = await newTask(task);
-  console.log(response)
+  console.log(response);
   if (response.error == null) {
-    task.id = await maxIdTask()
+    task.id = await maxIdTask();
     taskStore.newTask(task);
-  } 
+  }
   return response;
 };
 
 export const editTask = async (task) => {
-  console.log(task.id)
+  console.log(task.id);
   const response = await updateTask(task);
-  console.log(response)
+  console.log(response);
   if (response.error == null) {
-    console.log(task.id)
+    console.log(task.id);
     taskStore.deleteTask(task.id);
-    taskStore.newTask(task)
-  } 
+    taskStore.newTask(task);
+  }
   return response;
 };

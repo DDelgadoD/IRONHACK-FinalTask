@@ -17,7 +17,7 @@ export const useAuthStore = defineStore("auth", {
       this.user = "";
       console.log("bye");
     },
-    
+
     getUser() {
       return this.user;
     },

@@ -52,7 +52,7 @@ export const updateTask = async (task) => {
       content: task.content,
       max_time: task.max_time,
       discarded: false,
-      completed: false  
+      completed: false,
     })
     .eq("id", task.id);
 
@@ -86,8 +86,8 @@ export const maxIdTask = async () => {
   const response = await supabase
     .from("Tasks")
     .select("*")
-    .order("id", {ascending: false})
-    .limit(1)
+    .order("id", { ascending: false })
+    .limit(1);
 
   return response.data[0].id;
 };

@@ -3,13 +3,15 @@
     <h1>Timeline</h1>
     <section class="timeline">
       <div v-for="(task, i) in tasks" class="timeliner d-flex">
-
         <img src="../assets/timeLine/linea-medio.svg" />
 
         <div class="event">
-          <div :class="i % 2 ? 'eventBubble-p' : 'eventBubble-i' " class="eventBubble">
+          <div
+            :class="i % 2 ? 'eventBubble-p' : 'eventBubble-i'"
+            class="eventBubble"
+          >
             <div class="max-time">{{ task.max_time_format }}</div>
-            <div class="task-title">{{ task.title }}</div>
+            <div class="task-title">{{ task.title.substring(0, 16) }}</div>
           </div>
         </div>
 
@@ -20,16 +22,13 @@
       <img src="../assets/timeLine/threedots.svg" />
     </section>
   </div>
-
 </template>
 
 <script setup>
-
 const props = defineProps({
   tasks: Object,
   loaded: Boolean,
 });
-
 </script>
 
 <style scoped>
@@ -38,7 +37,6 @@ const props = defineProps({
   border-radius: 8px;
   margin: 2% auto;
 }
-
 
 .night-case {
   background-image: var(--night-bg);
@@ -57,7 +55,7 @@ const props = defineProps({
   overflow-x: scroll;
 }
 
-.timeliner{
+.timeliner {
   display: flex;
   align-items: center;
   height: 170px;
@@ -72,9 +70,8 @@ const props = defineProps({
   width: 150px;
   height: 60px;
   border-radius: 5px;
-  box-shadow: inset 0 0 5px rgba(158, 158, 158, 0.64)
+  box-shadow: inset 0 0 5px rgba(158, 158, 158, 0.64);
 }
-
 
 .eventBubble-i {
   top: -80px;
@@ -109,24 +106,21 @@ const props = defineProps({
 }
 
 [class*="eventBubble-i"]:before,
-[class*="eventBubble-p"]:before  {
-    border-top-color: rgba(222, 222, 222, 0.66);
+[class*="eventBubble-p"]:before {
+  border-top-color: rgba(222, 222, 222, 0.66);
 }
 
 [class*="eventBubble-i"]:after,
 [class*="eventBubble-p"]:after {
-  border-top-color: #F6F6F6;
-
+  border-top-color: #f6f6f6;
 }
 
 [class*="eventBubble-p"]:before,
-[class*="eventBubble-p"]:after  {
+[class*="eventBubble-p"]:after {
   bottom: 59px;
   left: 78px;
   transform: rotate(180deg);
 }
-
-
 
 .max-time {
   font-weight: bold;
