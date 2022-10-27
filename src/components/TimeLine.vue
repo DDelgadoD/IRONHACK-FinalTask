@@ -2,23 +2,22 @@
   <div class="container day-case">
     <h1>Timeline</h1>
     <section class="timeline">
-      <div v-for="(task, i) in tasks" class="timeline">
-        
-        <img v-if="i == 0" src="../assets/timeLine/linea-extremo.svg"/>
-        <img v-else src="../assets/timeLine/linea-medio.svg"/>
-        
-        <div :class="i%2 ? 'event2' : 'event1'">
-          <div :class="i%2 ? 'event2Bubble' : 'event1Bubble'">
+      <div v-for="(task, i) in tasks" class="timeliner d-flex">
+
+        <img src="../assets/timeLine/linea-medio.svg" />
+
+        <div class="event">
+          <div :class="i % 2 ? 'eventBubble-p' : 'eventBubble-i' " class="eventBubble">
             <div class="max-time">{{ task.max_time_format }}</div>
             <div class="task-title">{{ task.title }}</div>
           </div>
         </div>
-        
-        <img src="../assets/timeLine/dot.svg"/>
+
+        <img src="../assets/timeLine/dot.svg" />
       </div>
 
-      <img src="../assets/timeLine/linea-extremo.svg"/>
-      <img src="../assets/timeLine/threedots.svg"/>
+      <img src="../assets/timeLine/linea-extremo.svg" />
+      <img src="../assets/timeLine/threedots.svg" />
     </section>
   </div>
 
@@ -30,6 +29,7 @@ const props = defineProps({
   tasks: Object,
   loaded: Boolean,
 });
+
 </script>
 
 <style scoped>
@@ -38,6 +38,7 @@ const props = defineProps({
   border-radius: 8px;
   margin: 2% auto;
 }
+
 
 .night-case {
   background-image: var(--night-bg);
@@ -52,38 +53,41 @@ const props = defineProps({
 .timeline {
   display: flex;
   align-items: center;
+  height: 200px;
+  overflow-x: scroll;
+}
+
+.timeliner{
+  display: flex;
+  align-items: center;
   height: 170px;
 }
 
-.event1,
-.event2 {
+.event {
   position: relative;
 }
 
-.event1Bubble {
+.eventBubble {
   position: absolute;
   width: 150px;
   height: 60px;
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px rgba(158, 158, 158, 0.64)
+}
+
+
+.eventBubble-i {
   top: -80px;
   left: -15px;
-  border-radius: 5px;
-  box-shadow: inset 0 0 5px rgba(158, 158, 158, 0.64)
 }
 
-.event2Bubble {
-  position: absolute;
-  width: 150px;
-  height: 60px;
-  left: -105px;
+.eventBubble-p {
+  left: -80px;
   top: 20px;
-  border-radius: 5px;
-  box-shadow: inset 0 0 5px rgba(158, 158, 158, 0.64)
 }
 
-.event1Bubble:after,
-.event1Bubble:before,
-.event2Bubble:after,
-.event2Bubble:before {
+[class*="eventBubble-"]:after,
+[class*="eventBubble-"]:before {
   content: "";
   position: absolute;
   width: 0;
@@ -93,45 +97,47 @@ const props = defineProps({
   border-bottom: 0;
 }
 
-.event1Bubble:before {
+[class*="eventBubble-"]:before,
+[class*="eventBubble-"]:after {
+  border-width: 12px;
+}
+
+[class*="eventBubble-i"]:before,
+[class*="eventBubble-i"]:after {
+  left: 13px;
   bottom: -10px;
-  left: 13px;
-  border-top-color: rgba(222, 222, 222, 0.66);
-  border-width: 12px;
 }
 
-.event1Bubble:after {
-  bottom: -8px;
-  left: 13px;
+[class*="eventBubble-i"]:before,
+[class*="eventBubble-p"]:before  {
+    border-top-color: rgba(222, 222, 222, 0.66);
+}
+
+[class*="eventBubble-i"]:after,
+[class*="eventBubble-p"]:after {
   border-top-color: #F6F6F6;
-  border-width: 12px;
+
 }
 
-.event2Bubble:before {
+[class*="eventBubble-p"]:before,
+[class*="eventBubble-p"]:after  {
   bottom: 59px;
-  left: 103px;
-  border-top-color: rgba(222, 222, 222, 0.66);
-  border-width: 12px;
+  left: 78px;
   transform: rotate(180deg);
 }
 
-.event2Bubble:after {
-  bottom: 57px;
-  left: 103px;
-  border-top-color: #F6F6F6;
-  border-width: 12px;
-  transform: rotate(180deg);
-}
 
-.max-time{
+
+.max-time {
   font-weight: bold;
   font-size: 1rem;
-  margin:2%;
+  margin: 2%;
   color: white;
   background-color: rgba(20, 87, 92, 0.5);
   text-align: center;
 }
-.task-title{
+
+.task-title {
   text-align: center;
 }
 </style>

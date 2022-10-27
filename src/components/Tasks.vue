@@ -17,13 +17,13 @@
         />
       </div>
     </div>
-    <Modal :content="contentModalTask" v-show="showModalTask" @close-modal="showModalTask = false" />
+    <Modal :content="contentModalTask" :edit="true" :confirmDelete="false" v-show="showModalTask" @close-modal="showModalTask = false" />
   </div>
 </template>
 <script setup>
 import Cards from "../components/Cards.vue";
 import Modal from '../components/Modal.vue';
-import { ref, watch } from "vue";
+import { ref} from "vue";
 
 const props = defineProps({
   tasks: Object,
@@ -38,7 +38,7 @@ const contentModalTask = ref({
 })
 
 const addTask = () =>{
-  contentModalTask.value = {text:`Nueva Tarea`}
+  contentModalTask.value = {text:`Nueva Tarea`, add: true }
   showModalTask.value = true;
 } 
 

@@ -28,25 +28,10 @@ export const logout = async () => {
   return response;
 };
 
-// TABLE RELATED FUNCTIONS
-
-//// TASK RELATED FUNCTIONS
-
-/* task
-    {
-        task.id
-        task.title
-        task.content
-    }
-*/
+// TASK RELATED FUNCTIONS
 
 export const newTask = async (task) => {
-  const response = await supabase.from("Tasks").insert({
-    user_id: task.id,
-    task_title: task.title,
-    task_content: task.content,
-  });
-
+  const response = await supabase.from("Tasks").insert(task);
   return response;
 };
 
@@ -73,7 +58,6 @@ export const updateTask = async (task, where = "id") => {
 
 export const deleteTask = async (taskId) => {
   const response = await supabase.from("Tasks").delete().eq("id", taskId);
-
   return response;
 };
 

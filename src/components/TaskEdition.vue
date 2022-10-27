@@ -1,5 +1,5 @@
 <template>
-    <form>
+    <form v-on:submit.prevent="createOrEdit(props.add)">
         <div class="form-group">
             <label for="title">Título</label>
 
@@ -12,17 +12,28 @@
             <label for="datetime">Fecha Límite</label>
             <input class="form-control" id="datetime" type="datetime-local">
 
-            <button class="btn" id="submit" name="submit" type="submit">
+            <button class="btn" @click="$emit('close-modal')">
             Enviar
           </button>
         </div>
     </form>
 </template>
 <script setup>
+import { defineProps, defineEmits } from "vue";
+
+const emit = defineEmits(['close-modal'])
+const props = defineProps({
+  add: Boolean,
+});
+
+
+
+
 </script>
 <style scoped>
 form {
   margin: 0 10%;
+  min-width: 200px;
 }
 
 input, textarea {

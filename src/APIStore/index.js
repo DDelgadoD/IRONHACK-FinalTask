@@ -7,6 +7,7 @@ import {
   getTasks,
   discardTask,
   completeTask,
+  newTask
 } from "../API";
 
 const taskStore = useTaskStore();
@@ -56,7 +57,7 @@ export const initTasks = async () => {
 };
 
 // Inicializción de tarea en local o en supabase según toque
-export const delTasks = async (id) => {
+export const delTask = async (id) => {
   const response = await deleteTask(id);
   if (response.error == null) {
     taskStore.deleteTask(id);
@@ -86,4 +87,15 @@ export const disc = () => {
 
 export const comp = () => {
   taskStore.comp();
+};
+
+
+export const addTask = async (task) => {
+  
+  
+  const response = await newTask(task);
+  if (response.error == null) {
+    taskStore.newTask(task);
+  } 
+  return response;
 };

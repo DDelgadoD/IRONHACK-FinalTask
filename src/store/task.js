@@ -55,6 +55,11 @@ export const useTaskStore = defineStore("tasks", {
         if (x.id == TaskId) x.completed = true;
       });
     },
+
+    newTask(task){
+      this.tasks.push(task)
+    }
+
   },
 
   persist: {
