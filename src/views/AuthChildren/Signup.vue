@@ -109,13 +109,13 @@ const onSubmit = async () => {
 
     openModal(
       "Recibirás un email con las instrucciones a seguir. ¡Muchas Gracias!",
-      "src/assets/auths/email.png"
+      "email"
     );
     setTimeout(() => router.push({ name: "login" }), 1500);
   } else {
     openModal(
       "LAS CONTRASEÑAS NO COINCIDEN",
-      "src/assets/auths/warning-sign.png"
+      "warning"
     );
   }
 };

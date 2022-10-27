@@ -71,8 +71,11 @@
           </form>
         </div>
         <div v-else>
-          <div v-if="props.content.image">
-            <img :src="props.content.image" width="100" />
+          <div v-if="props.content.image == 'warning'">
+            <img src="../assets/auths/warning-sign.png" width="100" />
+          </div>
+          <div v-if="props.content.image == 'mail'">
+            <img src="../assets/auths/email.png" width="100" />
           </div>
           <p>{{ props.content.text }}</p>
           <div v-if="confirmDelete">
