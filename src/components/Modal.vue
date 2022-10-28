@@ -74,7 +74,7 @@
           <div v-if="props.content.image == 'warning'">
             <img src="../assets/auths/warning-sign.png" width="100" />
           </div>
-          <div v-if="props.content.image == 'mail'">
+          <div v-if="props.content.image == 'email'">
             <img src="../assets/auths/email.png" width="100" />
           </div>
           <p>{{ props.content.text }}</p>

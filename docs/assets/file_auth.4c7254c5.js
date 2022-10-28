@@ -1,1 +1,0 @@
-import{l as e}from"./file_index.ee6a5e94.js";const r=e("auth",{state:()=>({isAuth:!1,user:""}),actions:{login(t){this.isAuth=!0,this.user=t},logout(){this.isAuth=!1,this.user="",console.log("bye")},getUser(){return this.user}},persist:{enabled:!0,strategies:[{key:"auth",storage:localStorage}]}});export{r as u};
