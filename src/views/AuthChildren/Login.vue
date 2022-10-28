@@ -36,12 +36,20 @@
         <img src="../../assets/auths/flying.png" alt="Flying!" />
       </div>
     </div>
+    <Modal
+        :content="contentModal"
+        :useForm="false"
+        :confirmDelete="false"
+        v-show="showModal"
+        @close-modal="closeModal"
+      />
   </div>
 </template>
 <script setup>
 import { useRouter } from "vue-router";
 import { ref } from "vue";
 import { conecta } from "../../APIStore";
+import Modal from "../../components/Modal.vue";
 
 const router = useRouter();
 
@@ -59,9 +67,22 @@ const form = ref({
   },
 });
 
+const showModal = ref(false);
+const contentModal = ref({ text: "", image: false });
+
+const closeModal = () => {
+  showModal.value = false;
+};
+
+const openModal = async (textModal, imageModal = false) => {
+  contentModal.value = { text: textModal, image: imageModal };
+  showModal.value = true;
+};
+
+
 const onSubmit = async () => {
   const ret = await conecta(form);
-  ret ? console.log(ret) : router.push("/");
+  ret ? openModal("Credenciales incorrectas, ¿Estás haciendo un ataque de fuerza bruta?", "warning") : router.push("/");
 };
 </script>
 
